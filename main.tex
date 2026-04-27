@@ -1,0 +1,173 @@
+% -------------------------------------------------------------
+% Suggested template for the SDU Software Engineering Course, 2025
+% -------------------------------------------------------------
+\documentclass[11pt,                                          % Main text font size
+               a4paper,                                       % Paper size
+               openright,                                     % Chapters start on odd pages (right)
+               twoside]{report}                               % Print two-sided, LaTeX 'report' template
+               
+% -------------------------------------------------------------
+% PACKAGES - Only load if necessary / used
+% -------------------------------------------------------------
+\usepackage{graphicx}                                         % Include graphics
+\usepackage{xcolor}                                           % Advanced colours
+\usepackage{titlesec}
+% -------------------------------------------------------------
+% USER VARIABLES AND DEFINITIONS
+% -------------------------------------------------------------
+\newcommand{\theTitle}{2nd Semester Project - HeatItOn}         % Thesis title
+\newcommand{\runningTitle}{Semester Project Report}             % Short title for headers
+\newcommand{\thegroup}{\textbf{Group 8}}                  	% Author name
+\newcommand{\supervisor} {Radoslaw Marek Chylak}
+\newcommand{\groupmembers}{
+Adela Pastekova – adpas25@student.sdu.dk 
+Alex Zalanyi – alzal25@student.sdu.dk 
+Filip Tichy – fitic25@student.sdu.dk 
+Marija Savkina – masav25@student.sdu.dk 
+Melana Ohrimeca – meohr25@student.sdu.dk 
+Zoltan Suveges – zosuv25@student.sdu.dk 
+}
+\newcommand{\subtitle}[1]{%
+  \\[0.5em] % adjust vertical space as needed
+  {\Large\textit{\textcolor{mygrey}{#1}}}%
+}
+
+\definecolor{mygrey}{RGB}{64,64,64}
+                      % Define your own colours
+\definecolor{ocre}{RGB}{45,105,145} 
+\definecolor{barblue}{RGB}{153,204,254}                       % Used in Gantt chart
+\definecolor{groupblue}{RGB}{51,102,254}                      % Used in Gantt chart
+\definecolor{linkred}{RGB}{165,0,33}                          % Used in Gantt chart
+% -------------------------------------------------------------
+% START DOCUMENT CONTENT
+% -------------------------------------------------------------
+\begin{document}                                              % Start document
+
+% -------------------------------------------------------------
+% COVER PAGE
+% -------------------------------------------------------------
+\begin{titlepage}                                             % Create cover page
+\pagestyle{empty}                                             % No headers or footers on cover
+\centering                                                    % Centre all contents on cover page
+\includegraphics[width=0.7\textwidth]{Images/SDULogo-uk.png} \\ % UoE-SoE logo
+\vspace{40mm}                                                 % Vertical space
+\hrule\vspace{5mm}                                            % Horizontal rule above title
+{\LARGE \textbf{\textcolor{mygrey}{\theTitle}}} \subtitle{Heat Production Optimization}\\           % The title of the report
+\vspace{5mm}\hrule\vspace{20mm}                               % Horizontal rule below title
+
+{\large \thegroup} \\ \vspace{2mm} 
+{\large Alex Zalanyi – alzal25@student.sdu.dk} \\ \vspace{2mm} % The author
+{\large Filip Tichy – fitic25@student.sdu.dk} \\ \vspace{2mm} % The author
+{\large Adela Pastekova – adpas25@student.sdu.dk} \\ \vspace{2mm} % The author
+{\large Zoltan Suveges – zosuv25@student.sdu.dk} \\ \vspace{2mm} % The author
+{\large Melana Ohrimeca – meohr25@student.sdu.dk} \\ \vspace{2mm} % The author
+{\large Marija Savkina – masav25@student.sdu.dk} \\ \vspace{2mm} % The author
+
+\vfill                                                        % Fill space down to bottom of page
+{\small \today}     
+\end{titlepage}
+% -------------------------------------------------------------
+% FRONT
+% -------------------------------------------------------------
+%\pagenumbering{roman}                                         % Roman page numbering for preamble
+\setcounter{page}{1}                                          % Start page counter
+%\input{Chapters/Abstract}                             % Call abstract file
+\tableofcontents                                              % Add table of contents
+
+% -------------------------------------------------------------
+% LISTS OF FIGURES AND TABLES
+% -------------------------------------------------------------
+\listoffigures                                                % Add list of figures
+\listoftables                                                 % Add list of tables
+
+% -------------------------------------------------------------
+% CHAPTER - ABSTRACT
+% -------------------------------------------------------------
+\chapter[Abstract]{Abstract}             % Short and long title versions
+\label{chap:abstract}                                            % Chapter label
+\pagenumbering{arabic}                                        % Change age numbering to arabic
+\input{Chapters/Abstract.tex}                             % Call file with chapter
+
+% -------------------------------------------------------------
+% CHAPTER - INTRODUCTION
+% -------------------------------------------------------------
+\chapter[Introduction]{Introduction}             % Short and long title versions
+\label{chap:intro}                                            % Chapter label
+\input{Chapters/Introduction.tex}                             % Call file with chapter
+
+% -------------------------------------------------------------
+% CHAPTER - SCRUM IMPLEMENTATION
+% -------------------------------------------------------------
+\chapter[Scum Implementation]{Scrum Implementation}             % Short and long title versions
+\label{chap:scrum}                                            % Chapter label
+\input{Chapters/Scrum_Implementation.tex}                             % Call file with chapter
+
+% -------------------------------------------------------------
+% CHAPTER - SPRINTS
+% -------------------------------------------------------------
+\chapter[Sprints]{Sprints}             % Short and long title versions
+\label{chap:sprints}                                            % Chapter label
+\input{Chapters/Sprints.tex}                             % Call file with chapter
+
+% -------------------------------------------------------------
+% CHAPTER - SOLUTION(TECHNICAL ASPECT)
+% -------------------------------------------------------------
+\chapter[Solution(Technical Aspect)]{Solution(Technical Aspect)}             % Short and long title versions
+\label{chap:solution}                                            % Chapter label
+\input{Chapters/Solution(Technical_Aspect).tex}                             % Call file with chapter
+
+% -------------------------------------------------------------
+% CHAPTER - IMPLEMENTATION AND TECHNICAL REALIZATION
+% -------------------------------------------------------------
+\chapter[Implementation and Technical Realization]{Implementation and Technical Realization}             % Short and long title versions
+\label{chap:implement}                                            % Chapter label
+\input{Chapters/Implementation_and_Technical_Realization.tex}                             % Call file with chapter
+
+% -------------------------------------------------------------
+% CHAPTER - DISCUSSION AND REFLECTION
+% -------------------------------------------------------------
+\chapter[Discussion and Reflection]{Discussion and Reflection}             % Short and long title versions
+\label{chap:reflect}                                            % Chapter label
+\input{Chapters/Discussion_and_Reflection.tex}                             % Call file with chapter
+
+% -------------------------------------------------------------
+% CHAPTER - CONCLUSION
+% -------------------------------------------------------------
+\chapter[Conclusion]{Conclusion}             % Short and long title versions
+\label{chap:conclusion}                                            % Chapter label
+\input{Chapters/Conclusion.tex}                             % Call file with chapter
+
+% -------------------------------------------------------------
+% CHAPTER - REFERENCES
+% -------------------------------------------------------------
+\chapter[References]{References}             % Short and long title versions
+\label{chap:ref}                                            % Chapter label
+\input{Chapters/References.tex}                             % Call file with chapter
+
+% -------------------------------------------------------------
+% CHAPTER - AI USAGE
+% -------------------------------------------------------------
+\chapter[AI Usage]{AI Usage}             % Short and long title versions
+\label{chap:ai}                                            % Chapter label
+\input{Chapters/AI_Usage.tex}                             % Call file with chapter
+
+% -------------------------------------------------------------
+% CHAPTER - APPENDIX
+% -------------------------------------------------------------
+\appendix                                                     % Start appendices
+\chapter{Appendix}                          % Title of first appendix
+\input{Chapters/Appendix.tex}                                 % Call file with appendix
+
+% -------------------------------------------------------------
+% BIBLIOGRAPHY 
+% -------------------------------------------------------------
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+
+% -------------------------------------------------------------
+% END DOCUMENT CONTENT
+% -------------------------------------------------------------
+\end{document}
+
+
