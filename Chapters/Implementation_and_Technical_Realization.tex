@@ -1,6 +1,66 @@
 % -------------------------------------------------------------
 % IMPLEMENTATION AND TECHNICAL REALIZATION
 % -------------------------------------------------------------
-\section{Implementation and Technical Realization}
 
-\noindent This is our Implementation and Technical Realization.
+
+\noindent HeatItOn is divided into three sections, and two versions. First there is the midterm evaluation demo version, and then there is the final version. We will go through both to see the first implementation and the improvements and changes that we made for the final version. 
+
+\section{Frontend Implementation}
+
+ Our Frontend Implementation is desgined with the plant operators in mind, keeping it simple and user friendly. To achieve this, we started with a UI-sketch where we tried to come up with an easy to use and easy to understand concept, that we tried to achieve in our implementation.
+ 	
+The application is split into three different tabs. The first one, that the user sees when they launch the application is the Assets tab. Here the user can manage and see all the existing assets, they can import or export assets as csv's or manually add/remove or edit specific assets one by one. This page also has three preset toggles(Scenario 1, Scenario 2 and Custom). As the Assets page is where the operator will start the optimization process, by selecting the asset combination they want to optimize with, the toggles merely select from the assets the ones that are in that scenario. If they wish to optimize for a new scenario, they can select the Custom toggle, allowing them to run the optimization process for any scenario. After selecting the desired assets the user has to click on the Optimize button that will start the optimization process for the selected assets. 
+	
+The list of assets is connected through the backend with the database, each modification being done live in the database. The optimization process from the backend is called from the frontend by clicking a button. The Assets tab will send the Optimization algorithm the assets selected to be optimized every time the button is clicked.
+	
+The second tab, the Results tab is where, once the user started an optimization, the result of that run will appear. ON the left side, they can see and select out of a list of all results. When they select one result, the user can see the hourly result in a table format or view the data in different graphs. They can also export them into csv's. If the user would like to focus on a specific time period, not the entire optimiziation run, they can use a date-time picker to select from when to untill when they want to see the result data, which will affect the result table and the graphs as well.
+	
+The tab loads all the optimization-results from the database using the backend services.
+	
+The third tab, Sources, is where the user will upload/export or even edit source data. On the left, you can see a list of uploaded csv's again. When the user selects one, they can also visualize the source data in a few simple charts or see the entire source data in a table. The cells of the table are modifiable so they can also edit the source data.
+	
+This tab uploads all sources directly to the database, using the backend services, while the csv file's are handled locally.
+	
+Our goal with each tab was acheaving an easily navigable and understandable UI, while giving all the necessary tools for the plant-operators/users for adequate management. Although we only received source data for four weeks and two asset scenarios, we tried to create a scalable, modular UI, that can handle dozens of assets and years worth of source data. As a side goal we also wanted to achieve a simple yet modern and visually appealing look.
+
+\subsection{Midterm Version}
+
+For the midterm demo, we prioritised usability over aspect. As this version was a mere proof of concept, and its goal was to plant a picture of our way of implementing it and to show what we think is possible, some aspects of the overall user experience was ignored so we can focus on actual functionality.
+
+This means that the UI for this version has a very generic, template look. Buttons are rough and placed where we could fit them, while icons are uninteresting and unintuitive. A majorly different approach for displaying assets, results and sources was used in this version. Instead of the frontend lists updating to changes accordingly(like uploading csv's or generating results) in real time, we added a refress button that, when clicked, reloads all the data from the database. This solution was a compromise made for this version, and eliminating it, a focuspoint for the final version.
+
+The Assets tab was fully functional, and only needed some visual and aesthetic improvements.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{Images/demo-assets.png}
+\caption{Assets tab from the demo version}
+\label{fig:assets-demo}
+\end{figure}
+
+The Results tab in this version is defined by minimalistic graphs, that made it hard to visualize the results. Our three graphs(electricity use/production, heat production and CO2 production) were a good start but we realised we need a lot more for proper visualization.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{Images/demo-results.png}
+\caption{Results tab from the demo version}
+\label{fig:results-demo}
+\end{figure}
+
+The Sources tab functioned as expected but the possibility to edit the csv data was missing from this version.
+
+Overall the demo was a very solid proof of concept that helped us learn what we were missing for the final version while also showing us the direction we are going.
+	
+\subsection{Final Version}
+
+
+\section{Backend Implementation}
+\subsection{Midterm Version}
+
+\subsection{Final Version}
+
+
+\section{Data Management}
+\subsection{Midterm Version}
+
+\subsection{Final Version}
