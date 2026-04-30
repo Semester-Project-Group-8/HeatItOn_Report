@@ -3,15 +3,21 @@
 % -------------------------------------------------------------
 \documentclass[11pt,                                          % Main text font size
                a4paper,                                       % Paper size
-               openright,                                     % Chapters start on odd pages (right)
-               twoside]{report}                               % Print two-sided, LaTeX 'report' template
+               oneside]{report}                               % Print two-sided, LaTeX 'report' template
                
 % -------------------------------------------------------------
 % PACKAGES - Only load if necessary / used
 % -------------------------------------------------------------
 \usepackage{graphicx}                                         % Include graphics
-\usepackage{xcolor}                                           % Advanced colours
+\usepackage{xcolor}      
+\definecolor{nounred}{HTML}{E63946} % A nice dark red
+\definecolor{verbblue}{HTML}{007BFF} % A nice dark blue% Advanced colours
 \usepackage{titlesec}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{tabularx} % For tables that fit the page width
+\usepackage{booktabs} % For professional-looking lines
+\usepackage{enumitem}
 % -------------------------------------------------------------
 % USER VARIABLES AND DEFINITIONS
 % -------------------------------------------------------------
@@ -94,6 +100,20 @@ Zoltan Suveges – zosuv25@student.sdu.dk
 \chapter[Introduction]{Introduction}             % Short and long title versions
 \label{chap:intro}                                            % Chapter label
 \input{Chapters/Introduction.tex}                             % Call file with chapter
+
+% -------------------------------------------------------------
+% CHAPTER - REQUIREMENTS
+% -------------------------------------------------------------
+\chapter[Requirements]{Requirements}             % Short and long title versions
+\label{chap:requirements}                                            % Chapter label
+\input{Chapters/Requirements}                             % Call file with chapter
+
+% -------------------------------------------------------------
+% CHAPTER - PLANNING
+% -------------------------------------------------------------
+\chapter[Planning]{Planning}             % Short and long title versions
+\label{chap:planning}                                            % Chapter label
+\input{Chapters/Planning}                             % Call file with chapter
 
 % -------------------------------------------------------------
 % CHAPTER - SCRUM IMPLEMENTATION
