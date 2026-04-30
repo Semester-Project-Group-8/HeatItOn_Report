@@ -3,8 +3,7 @@
 % -------------------------------------------------------------
 \documentclass[11pt,                                          % Main text font size
                a4paper,                                       % Paper size
-               openright,                                     % Chapters start on odd pages (right)
-               twoside]{report}                               % Print two-sided, LaTeX 'report' template
+               oneside]{report}             % changed a little so all text is centred 
                
 % -------------------------------------------------------------
 % PACKAGES - Only load if necessary / used
@@ -12,6 +11,7 @@
 \usepackage{graphicx}                                         % Include graphics
 \usepackage{xcolor}                                           % Advanced colours
 \usepackage{titlesec}
+\usepackage{amsmath}
 % -------------------------------------------------------------
 % USER VARIABLES AND DEFINITIONS
 % -------------------------------------------------------------
@@ -94,6 +94,13 @@ Zoltan Suveges – zosuv25@student.sdu.dk
 \chapter[Introduction]{Introduction}             % Short and long title versions
 \label{chap:intro}                                            % Chapter label
 \input{Chapters/Introduction.tex}                             % Call file with chapter
+
+% -------------------------------------------------------------
+% CHAPTER - REQUIREMENTS
+% -------------------------------------------------------------
+\chapter[Requirements]{Requirements}             % Short and long title versions
+\label{chap:requirements}                                            % Chapter label
+\input{Chapters/Requirements}                             % Call file with chapter
 
 % -------------------------------------------------------------
 % CHAPTER - SCRUM IMPLEMENTATION
