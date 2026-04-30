@@ -1,3 +1,9 @@
+% --- Add to preamble ---
+% \usepackage{xcolor}
+% \definecolor{nounred}{HTML}{8B0000} % Dark red for nouns
+% \definecolor{verbblue}{HTML}{00008B} % Dark blue for verbs
+% -----------------------
+
 \section{Verb-noun analysis}
 
 \textcolor{nounred}{Asset Manager (AM)} should \textcolor{verbblue}{store} its \textcolor{nounred}{data} in local \textcolor{nounred}{files} and \textcolor{verbblue}{supply} other \textcolor{nounred}{modules} with it. \textcolor{nounred}{Source Data Manager (SDM)} should \textcolor{verbblue}{store} \textcolor{nounred}{dynamic data} in \textcolor{nounred}{csv files}. \textcolor{nounred}{Result Data Manager (RDM)} should \textcolor{verbblue}{save} \textcolor{nounred}{result data} in local \textcolor{nounred}{CSV files}. \textcolor{nounred}{Optimizer (OPT)} should \textcolor{verbblue}{calculate} the best \textcolor{nounred}{economical schedule} of the \textcolor{nounred}{heat production} for a given \textcolor{nounred}{period}. It also \textcolor{verbblue}{secures} \textcolor{nounred}{heat availability} to all \textcolor{nounred}{buildings} at any \textcolor{nounred}{time}. There are different \textcolor{nounred}{units}, each \textcolor{verbblue}{has} a specific \textcolor{nounred}{production cost}, expressed in \textcolor{nounred}{DKK} per MWh produced \textcolor{nounred}{heat}. For \textcolor{nounred}{heat only units} there are no further \textcolor{nounred}{expenses} nor \textcolor{nounred}{income}. \textcolor{nounred}{Electricity producing units} should \textcolor{verbblue}{sell} the produced \textcolor{nounred}{electricity} and \textcolor{verbblue}{have} thereby an extra \textcolor{nounred}{income} depending on the \textcolor{nounred}{electricity prices} which can \textcolor{verbblue}{change} from \textcolor{nounred}{hour} to \textcolor{nounred}{hour}. \textcolor{nounred}{Electricity consuming units} should \textcolor{verbblue}{buy} the \textcolor{nounred}{electricity} and \textcolor{verbblue}{have} thereby an extra \textcolor{nounred}{expense}, again depending on the \textcolor{nounred}{electricity prices}. \textcolor{nounred}{Net production cost} should be \textcolor{verbblue}{calculated} differently for each \textcolor{nounred}{unit type} and \textcolor{verbblue}{compared} to build \textcolor{nounred}{priorities}. The \textcolor{nounred}{Data Visualization} should \textcolor{verbblue}{display} a \textcolor{nounred}{graphical presentation} of important \textcolor{nounred}{source and result data}.
@@ -193,3 +199,16 @@
     \end{itemize} \\
     \hline
 \end{tabularx}
+
+\vspace{2em}
+
+\section*{System Design}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/UML.png} 
+    \caption{Combined Frontend and Backend Class Diagram (In-Progress)}
+    \label{fig:system_uml}
+\end{figure}
+
+The diagram above represents the unified system architecture. This is a preliminary version that integrates both the UI components (Frontend) and the logic/data services (Backend).
