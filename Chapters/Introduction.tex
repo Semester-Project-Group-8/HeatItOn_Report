@@ -3,13 +3,88 @@
 % -------------------------------------------------------------
 \section{Introduction}
 
-<<<<<<< HEAT-191-move-requirements-to-la-tex
-\noindent This is our Introduction.
+\subsection*{Problem Statement}
+
+\hspace*{1cm}HeatItOn is a utility in the city of Heating that supplies heat to approximately 1600 buildings. HeatItOn currently plans heat production manually, which makes it hard to always choose the cheapest combination of production units. The problem is therefore to develop an optimization system that can automatically create heat production schedules that always meet the heat demand while minimizing total costs and maximizing profit from electricity production/consumption.
+
+\subsection*{Problem Analysis}
+
+\hspace*{1cm}HeatItOn is a utility in the city of Heating that supplies heat to approximately 1600 buildings through a district heating network. Heat is produced by traditional heat‑only boilers and by units that both produce heat and produce or consume electricity (CHPs). Most of the heat comes from cogeneration plants that use different fuels such as waste, gas, coal, and biomass. 
+
+District heating works by pumping hot water from a plant through insulated pipes to buildings, where it is used for space heating and hot tap water,  then cooled water then flows back to the plant to be reheated. 
+
+Today, HeatItOn plans its heat production manually. This makes it difficult to choose the best combination of units and to react to changing electricity prices in a systematic way. Our task is to develop software that optimizes heat production and creates heat schedules for all available units with the lowest possible costs and the highest possible profit from the electricity market. 
 
 
-% -------------------------------------------------------------
-% REQUIREMENTS
-% -------------------------------------------------------------
+\medskip
+
+
+Our system will consist of 5 main modules:
+\begin{itemize}
+    \item Optimizer (OPT)
+    \item Data Visualization (DV)
+    \item Asset Manager (AM)
+    \item Source Data Manager (SDM)
+    \item Result Data Manager (RDM)
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Images/architecture.png}
+    \caption{System Architecture Diagram}
+    \label{fig:architecture}
+\end{figure}
+
+\textbf{Optimizer (OPT):} \\
+The OPT considers all the available production units and calculates the best economical schedule of the heat production while securing heat availability to all buildings at any time. All units have a specific production cost, expressed in DKK per MWh produced heat. The source of this information is excel file called 2026 Heat Production Optimization - Danfoss Deliveries  
+
+\medskip
+
+\textbf{Data Visualization (DV):} \\
+The DV is responsible for a graphical presentation of important source and result data.  
+
+\medskip
+
+\textbf{Asset Manager (AM):} \\
+The AM is a repository for static system information and is responsible for making this information available for other modules. Through the AM, other modules can retrieve heating grid information such as name and a graphical representation of the grid.  
+
+\medskip
+
+\textbf{Source Data Manager (SDM):} \\
+The SDM is a repository for dynamic system information. The SDM can hold its data in local CSV files. The SDM provides time series for the heat demand and electricity prices. Both the heat demand and the electricity prices are given with a resolution of 1 hour.  
+
+\medskip
+
+\textbf{Result Data Manager (RDM):} \\
+The RDM is a repository for optimization results 
+
+\subsubsection*{Scenarios}
+
+\textbf{Scenario 1 (Heat only)} \\
+\hspace*{1cm}Scenario 1 uses a single district heating network with three gas boilers and one oil boiler. The gas boilers are cheaper, while the oil boiler has higher production costs and is mainly used in peak demand periods. All boilers have constant production costs that do not depend on the hour of operation. Our strategy is to run the cheapest gas boiler first and then add production from the more expensive boilers if needed to meet the heat demand. We will also have to choose a period of 30 to 60 hours when one of the gas boiler will be down due to maintenance. 
+
+\medskip
+
+\textbf{Scenario 2 (Heat and electricity)} \\
+\hspace*{1cm}In Scenario 2, we work with two gas boilers (GB1, GB3), one gas motor (GM1), and one electric boiler (EB1). The gas motor produces electricity (which we can sell), while the electric boiler consumes electricity (which we must buy). When electricity prices are high we will run the gas motor because selling electricity generates extra income. When electricity prices are low we will run the electric boiler because electricity is cheap to buy. 
+
+To decide which units to use in each hour, we will calculate the net production cost for each unit and compare them. 
+
+\medskip
+
+In this project we will use data delivered by Danfoss, including:
+\begin{itemize}
+    \item Graphical representation of the district heating network
+    \item Configuration parameters for each production unit (image, produced heat, produced/consumed electricity, primary energy consumption, production costs, $\text{CO}_2$ emissions)
+    \item Heat demand and electricity prices for a 14-day winter period with 1-hour resolution
+    \item Heat demand and electricity prices for a 14-day summer period with 1-hour resolution
+\end{itemize}
+
+\medskip
+
+If there is time left, we can extend the project by using other visualization libraries, storing data in a database, enabling or disabling units directly from the UI, running alternative configurations in Scenario 2, and implementing APIs and an API client for reading electricity prices from Energinet.dk.
+
+
 \section{Functional Requirements}
 
 \subsection*{Scenario 1}
@@ -169,86 +244,3 @@ The system is split into three parts: Front End, Back End and the Database. Both
     \item Motherboard supporting hardware optimization
     \item 3GB of free space
 \end{itemize}
-=======
-\subsection*{Problem Statement}
-
-\hspace*{1cm}HeatItOn is a utility in the city of Heating that supplies heat to approximately 1600 buildings. HeatItOn currently plans heat production manually, which makes it hard to always choose the cheapest combination of production units. The problem is therefore to develop an optimization system that can automatically create heat production schedules that always meet the heat demand while minimizing total costs and maximizing profit from electricity production/consumption.
-
-\subsection*{Problem Analysis}
-
-\hspace*{1cm}HeatItOn is a utility in the city of Heating that supplies heat to approximately 1600 buildings through a district heating network. Heat is produced by traditional heat‑only boilers and by units that both produce heat and produce or consume electricity (CHPs). Most of the heat comes from cogeneration plants that use different fuels such as waste, gas, coal, and biomass. 
-
-District heating works by pumping hot water from a plant through insulated pipes to buildings, where it is used for space heating and hot tap water,  then cooled water then flows back to the plant to be reheated. 
-
-Today, HeatItOn plans its heat production manually. This makes it difficult to choose the best combination of units and to react to changing electricity prices in a systematic way. Our task is to develop software that optimizes heat production and creates heat schedules for all available units with the lowest possible costs and the highest possible profit from the electricity market. 
-
-
-\medskip
-
-
-Our system will consist of 5 main modules:
-\begin{itemize}
-    \item Optimizer (OPT)
-    \item Data Visualization (DV)
-    \item Asset Manager (AM)
-    \item Source Data Manager (SDM)
-    \item Result Data Manager (RDM)
-\end{itemize}
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.8\textwidth]{Images/architecture.png}
-    \caption{System Architecture Diagram}
-    \label{fig:architecture}
-\end{figure}
-
-\textbf{Optimizer (OPT):} \\
-The OPT considers all the available production units and calculates the best economical schedule of the heat production while securing heat availability to all buildings at any time. All units have a specific production cost, expressed in DKK per MWh produced heat. The source of this information is excel file called 2026 Heat Production Optimization - Danfoss Deliveries  
-
-\medskip
-
-\textbf{Data Visualization (DV):} \\
-The DV is responsible for a graphical presentation of important source and result data.  
-
-\medskip
-
-\textbf{Asset Manager (AM):} \\
-The AM is a repository for static system information and is responsible for making this information available for other modules. Through the AM, other modules can retrieve heating grid information such as name and a graphical representation of the grid.  
-
-\medskip
-
-\textbf{Source Data Manager (SDM):} \\
-The SDM is a repository for dynamic system information. The SDM can hold its data in local CSV files. The SDM provides time series for the heat demand and electricity prices. Both the heat demand and the electricity prices are given with a resolution of 1 hour.  
-
-\medskip
-
-\textbf{Result Data Manager (RDM):} \\
-The RDM is a repository for optimization results 
-
-\subsubsection*{Scenarios}
-
-\textbf{Scenario 1 (Heat only)} \\
-\hspace*{1cm}Scenario 1 uses a single district heating network with three gas boilers and one oil boiler. The gas boilers are cheaper, while the oil boiler has higher production costs and is mainly used in peak demand periods. All boilers have constant production costs that do not depend on the hour of operation. Our strategy is to run the cheapest gas boiler first and then add production from the more expensive boilers if needed to meet the heat demand. We will also have to choose a period of 30 to 60 hours when one of the gas boiler will be down due to maintenance. 
-
-\medskip
-
-\textbf{Scenario 2 (Heat and electricity)} \\
-\hspace*{1cm}In Scenario 2, we work with two gas boilers (GB1, GB3), one gas motor (GM1), and one electric boiler (EB1). The gas motor produces electricity (which we can sell), while the electric boiler consumes electricity (which we must buy). When electricity prices are high we will run the gas motor because selling electricity generates extra income. When electricity prices are low we will run the electric boiler because electricity is cheap to buy. 
-
-To decide which units to use in each hour, we will calculate the net production cost for each unit and compare them. 
-
-\medskip
-
-In this project we will use data delivered by Danfoss, including:
-\begin{itemize}
-    \item Graphical representation of the district heating network
-    \item Configuration parameters for each production unit (image, produced heat, produced/consumed electricity, primary energy consumption, production costs, $\text{CO}_2$ emissions)
-    \item Heat demand and electricity prices for a 14-day winter period with 1-hour resolution
-    \item Heat demand and electricity prices for a 14-day summer period with 1-hour resolution
-\end{itemize}
-
-\medskip
-
-If there is time left, we can extend the project by using other visualization libraries, storing data in a database, enabling or disabling units directly from the UI, running alternative configurations in Scenario 2, and implementing APIs and an API client for reading electricity prices from Energinet.dk.
-\medskip
->>>>>>> main
