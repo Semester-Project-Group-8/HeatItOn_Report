@@ -10,14 +10,12 @@
 % -------------------------------------------------------------
 \usepackage{graphicx}                                         % Include graphics
 \usepackage{xcolor}      
-\definecolor{nounred}{HTML}{E63946} % A nice dark red
-\definecolor{verbblue}{HTML}{007BFF} % A nice dark blue% Advanced colours
 \usepackage{titlesec}
-\usepackage{amsmath}
-\usepackage{multicol}
+\usepackage{amsmath}  % For math formulas
+\usepackage{multicol} % For multi-column 
 \usepackage{tabularx} % For tables that fit the page width
 \usepackage{booktabs} % For professional-looking lines
-\usepackage{enumitem}
+\usepackage{enumitem} % For rormating lists of items
 % -------------------------------------------------------------
 % USER VARIABLES AND DEFINITIONS
 % -------------------------------------------------------------
@@ -44,6 +42,8 @@ Zoltan Suveges – zosuv25@student.sdu.dk
 \definecolor{barblue}{RGB}{153,204,254}                       % Used in Gantt chart
 \definecolor{groupblue}{RGB}{51,102,254}                      % Used in Gantt chart
 \definecolor{linkred}{RGB}{165,0,33}                          % Used in Gantt chart
+\definecolor{nounred}{HTML}{E63946}        % red color for Verb-Noun
+\definecolor{verbblue}{HTML}{007BFF}       % blue color for Verb-Noun
 % -------------------------------------------------------------
 % START DOCUMENT CONTENT
 % -------------------------------------------------------------
@@ -100,6 +100,13 @@ Zoltan Suveges – zosuv25@student.sdu.dk
 \chapter[Introduction]{Introduction}             % Short and long title versions
 \label{chap:intro}                                            % Chapter label
 \input{Chapters/Introduction.tex}                             % Call file with chapter
+
+% -------------------------------------------------------------
+% CHAPTER - PLANNING
+% -------------------------------------------------------------
+\chapter[Planning]{Planning}             % Short and long title versions
+\label{chap:planning}                                            % Chapter label
+\input{Chapters/Planning}                             % Call file with chapter
 
 % -------------------------------------------------------------
 % CHAPTER - SCRUM IMPLEMENTATION
@@ -175,5 +182,3 @@ Zoltan Suveges – zosuv25@student.sdu.dk
 % END DOCUMENT CONTENT
 % -------------------------------------------------------------
 \end{document}
-
-
