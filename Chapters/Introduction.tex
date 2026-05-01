@@ -3,6 +3,173 @@
 % -------------------------------------------------------------
 \section{Introduction}
 
+<<<<<<< HEAT-191-move-requirements-to-la-tex
+\noindent This is our Introduction.
+
+
+% -------------------------------------------------------------
+% REQUIREMENTS
+% -------------------------------------------------------------
+\section{Functional Requirements}
+
+\subsection*{Scenario 1}
+
+\subsubsection*{1. Source Data Manager (SDM) \& Result Data Manager (RDM)}
+\textit{Components that handle where the data comes from and where it goes.}
+
+\begin{itemize}
+    \item The user should be able to receive input data.
+    \item The user should be able to retrieve input data.
+    \item The user should be able to output data. \textbf{[Database integration]}
+\end{itemize}
+
+\subsubsection*{2. Asset Manager (AM)}
+\textit{Component that keeps track of the physical boilers and their constraints.}
+
+\begin{itemize}
+    \item The user should be able to upload assets from csv file.
+    \item The user should be able to add asset.
+    \item The user should be able to edit assets. \textbf{[Boiler definitions]}
+    \item The user should restrict the maximum heat output of each unit as follows: GB1 to 3.0 MW, GB2 to 2.0 MW, GB3 to 4.0 MW, and OB1 to 6.0 MW. \textbf{[Capacity constraints]}
+\end{itemize}
+
+\subsubsection*{3. Optimizer (OPT)}
+\begin{itemize}
+    \item The user should be able to schedule the cheapest boilers first to fulfill the district's heat demand. \textbf{[Cost-based dispatch]}
+    \item Based on production costs, the optimizer should prioritize boilers in the following strict order: GB1 (510 DKK), GB2 (540 DKK), GB3 (580 DKK), OB1 (690 DKK). \textbf{[Dispatch order]}
+    \item The user should only use the more expensive oil boiler (OB1) to supplement heat during peak demand periods when the gas boilers cannot fulfil the total demand. \textbf{[Peak demand handling]}
+    \item The user should be capable of optimizing units separately for both a winter period and a summer period. \textbf{[Seasonal optimization]}
+    \item The optimizer should remove a designated gas boiler from the available pool of units during its scheduled maintenance period, ensuring it produces 0 MW. \textbf{[Maintenance logic]}
+\end{itemize}
+
+\subsubsection*{4. Data Visualization (DV) / User Interface}
+\begin{itemize}
+    \item The UI should validate that the user's selected maintenance duration is a minimum of 30 hours and a maximum of 60 hours. \textbf{[Maintenance constraints validation]}
+    \item The UI should display a chart or graph that visually compares the total heat demand against the individual heat output contributions of GB1, GB2, GB3, and OB1 over time. \textbf{[Result graphing]}
+    \item The UI should provide a way for the user to choose an obligatory maintenance period for one unit in both the summer and winter periods. \textbf{[Maintenance scheduling]}
+\end{itemize}
+
+\subsection*{Scenario 2}
+
+\subsubsection*{1. Source Data Manager (SDM) \& Result Data Manager (RDM)}
+\textit{Component that handle a crucial data stream: electricity prices.}
+
+\begin{itemize}
+    \item The user should be able to retrieve hourly electricity prices data from data base.
+    \item The user should be able to retrieve hourly heat demand data from the database. \textbf{[Market data retrieval]}
+\end{itemize}
+
+\subsubsection*{2. Asset Manager (AM)}
+\textit{The physical assets include units that interact with the power grid.}
+
+\begin{itemize}
+    \item The user should be able to upload assets from csv file. \textbf{[Unit registration]}
+    \item The user should be able to limit the maximum heat output of each unit: GB1 to 3.0 MW, GB3 to 4.0 MW, GM1 to 5.3 MW, and EB1 to 6.0 MW. \textbf{[Heat capacity constraints]}
+    \item The user should account for electricity production and consumption capacities, specifically noting that GM1 produces up to 3.9 MW of electricity, while EB1 consumes up to 6.0 MW (-6.0 MW). \textbf{[Electricity constraints]}
+\end{itemize}
+
+\subsubsection*{3. Optimizer (OPT)}
+\begin{itemize}
+    \item The user should be able to calculate the net production costs for the electricity-producing/consuming units based on the fluctuating electricity prices. \textbf{[Dynamic net cost calculation]}
+    \item The optimizer should prioritize running the gas motor (GM1) during periods of high electricity prices. \textbf{[High-price optimization logic]}
+    \item The optimizer should prioritize running the electric boiler (EB1) during periods of low electricity prices. \textbf{[Low-price optimization logic]}
+    \item The optimizer should actively prevent the gas motor (GM1) from running during summer periods with negative electricity prices (to avoid paying for produced electricity).
+    \item The optimizer should recognize the electric boiler as an extra income source during negative price hours. \textbf{[Negative price handling]}
+    \item The optimizer should completely remove either GB1 or GM1 from the optimization calculations during its scheduled maintenance period. \textbf{[Maintenance logic]}
+\end{itemize}
+
+\subsubsection*{4. Data Visualization (DV) / User Interface}
+\begin{itemize}
+    \item The UI should allow the user to select an obligatory maintenance period for either GB1 or GM1, enforcing a duration between 30 and 60 hours. \textbf{[Maintenance scheduling]}
+    \item The UI should display a graph comparing the total heat demand against the individual heat output contributions of GB1, GB3, GM1, and EB1 over time. \textbf{[Result graphing]}
+\end{itemize}
+
+\subsection*{General App Navigation \& UI}
+\textit{Requirements that cover the flow of the application from the user's perspective.}
+
+\begin{itemize}
+    \item Upon launch, the application should display a home screen allowing the user to explicitly select between Scenario 1 and Scenario 2. \textbf{[Startup Page]}
+    \item The user interface should include a persistent navigation element that allows the user to switch between Scenario 1 and Scenario 2 without needing to return to the initial home screen. \textbf{[Persistent navigation]}
+\end{itemize}
+
+\subsection*{System Architecture \& Data Handling}
+\textit{Requirements that cover how the app manages data and how the 5 components talk to each other.}
+
+\begin{itemize}
+    \item The user should be able to use a database system to save and retrieve data. \textbf{[Database storage]}
+    \item The Source Data Manager should implement an API client to directly read real-time electricity prices from the Energinet.dk web servers. \textbf{[External API integration]}
+\end{itemize}
+
+\subsection*{Advanced Configuration \& Comparison}
+\textit{Requirements that give the user more control over the optimization process.}
+
+\begin{itemize}
+    \item The UI should provide a mechanism for the user to dynamically activate or deactivate individual heating units from being considered in the optimizer's calculations. \textbf{[Dynamic unit toggling]}
+    \item The system should allow the user to run Scenario 2 under different configurations. \textbf{[Scenario 2 configuration comparison]}
+    \item The Data Visualization module should compare the results of these different Scenario 2 configurations specifically in terms of generated revenue and total $\text{CO}_2$ emissions. \textbf{[Comparison metrics]}
+\end{itemize}
+
+\section{Non-Functional Requirements}
+
+\subsection*{1. Performance \& Efficiency}
+\begin{itemize}
+    \item The system should complete all optimization calculations within 3 seconds of the user clicking or "Optimize."
+    \item The system should completely render the resulting graphs within 3 seconds of the user clicking "Run". \textbf{[ Processing speed ]}
+    \item The system and database should be capable of efficiently loading, processing, and aggregating a full month of hourly data ( approx. 720-744 data points ) without UI freezing or lag. \textbf{[ Data volume handling ]}
+\end{itemize}
+
+\subsection*{2. Environment \& Portability}
+\begin{itemize}
+    \item The application should be fully cross-platform compatible, executing reliably on Windows, macOS, and Linux operating systems. \textbf{[ Cross-platform compatibility ]}
+\end{itemize}
+
+\subsection*{3. Usability \& Localization}
+\begin{itemize}
+    \item The entire user interface, including all menus, labels, and error messages, should be written in English. \textbf{[ UI Language ]}
+    \item All financial values, production costs, and revenues should be calculated and displayed strictly using Danish Kroner (DKK). \textbf{[ Currency localization ]}
+    \item The resulting visualization for a month of data should be highly readable, formatting the daily boiler usage as a stacked chart (matching the total heat demand on the Y-axis, and days of the month on the X-axis) alongside a daily cost graph. \textbf{[ Visualization clarity ]}
+\end{itemize}
+
+\subsection*{4. Reliability \& Robustness}
+\begin{itemize}
+    \item The system should not crash if the Energinet.dk API is unresponsive or if the user loses internet connection. \textbf{[ System stability ]}
+    \item In the case of an API failure, the system should handle the error by displaying a clear, understandable error feedback message or popup to the user. \textbf{[ Exception handling ]}
+\end{itemize}
+
+
+\section{User Requirements}
+The system is made with a certain type of user in mind. They should have the following attributes for optimal user experience:
+\begin{itemize}
+    \item Be able to read in English
+    \item Be able to navigate a simple UI
+    \item Have a basic understanding of the problem being solved by the system
+    \item Be able to read and understand input/output data
+\end{itemize}
+
+
+\section{System Requirements}
+The system is split into three parts: Front End, Back End and the Database. Both the Backend and the Database are run in a Linux Docker container. The Frontend is run locally on the user's machine. For a machine to run the project they need the following:
+
+\subsection*{Software Specifications}
+\begin{description}
+    \item[Entire project:] .NET 9.0
+    \item[Backend:] Docker Desktop (latest version)
+    \item[Database:] Docker Desktop with MySql Image (shall be installed automatically if missing)
+    \item[Frontend:] Required NuGet packages (all must be compatible with .NET 9.0):
+    \begin{itemize}
+        \item Avalonia.UI
+    \end{itemize}
+\end{description}
+
+\subsection*{Hardware Requirements}
+\begin{itemize}
+    \item WSL version 2.1.5 or later (for Windows)
+    \item Any of the following OS's: Windows 10/11 (64 bit), MacOS, Linux (64 bit)
+    \item 4GB of RAM
+    \item Motherboard supporting hardware optimization
+    \item 3GB of free space
+\end{itemize}
+=======
 \subsection*{Problem Statement}
 
 \hspace*{1cm}HeatItOn is a utility in the city of Heating that supplies heat to approximately 1600 buildings. HeatItOn currently plans heat production manually, which makes it hard to always choose the cheapest combination of production units. The problem is therefore to develop an optimization system that can automatically create heat production schedules that always meet the heat demand while minimizing total costs and maximizing profit from electricity production/consumption.
@@ -84,3 +251,4 @@ In this project we will use data delivered by Danfoss, including:
 
 If there is time left, we can extend the project by using other visualization libraries, storing data in a database, enabling or disabling units directly from the UI, running alternative configurations in Scenario 2, and implementing APIs and an API client for reading electricity prices from Energinet.dk.
 \medskip
+>>>>>>> main
