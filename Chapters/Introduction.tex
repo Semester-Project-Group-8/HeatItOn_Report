@@ -164,7 +164,7 @@ If there is time left,  project can be extended by usage of other visualization 
 
 \begin{itemize}
     \item Upon launch, the application should display a home screen allowing the user to explicitly select between Scenario 1 and Scenario 2. \textbf{[Startup Page]}
-    \item The user interface should include a persistent navigation element that allows the user to switch between Scenario 1 and Scenario 2 without needing to return to the initial home screen. \textbf{[Persistent navigation]}
+    \item The user interface should allow user to navigate  between scenarios easily. \textbf{[Scenario navigation]}
 \end{itemize}
 
 \subsection*{System Architecture \& Data Handling}
@@ -172,7 +172,6 @@ If there is time left,  project can be extended by usage of other visualization 
 
 \begin{itemize}
     \item The user should be able to use a database system to save and retrieve data. \textbf{[Database storage]}
-    \item The Source Data Manager should implement an API client to directly read real-time electricity prices from the Energinet.dk web servers. \textbf{[External API integration]}
 \end{itemize}
 
 \subsection*{Advanced Configuration \& Comparison}
@@ -180,8 +179,8 @@ If there is time left,  project can be extended by usage of other visualization 
 
 \begin{itemize}
     \item The UI should provide a mechanism for the user to dynamically activate or deactivate individual heating units from being considered in the optimizer's calculations. \textbf{[Dynamic unit toggling]}
-    \item The system should allow the user to run Scenario 2 under different configurations. \textbf{[Scenario 2 configuration comparison]}
-    \item The Data Visualization module should compare the results of these different Scenario 2 configurations specifically in terms of generated revenue and total $\text{CO}_2$ emissions. \textbf{[Comparison metrics]}
+    \item The system should allow the user to run custom scenario with configurations setted by user. \textbf{[Custom scenario configuration]}
+    \item The Data Visualization module should provide results of different configured scenarios for result comparison. \textbf{[Comparison metrics]}
 \end{itemize}
 
 \section{Non-Functional Requirements}
