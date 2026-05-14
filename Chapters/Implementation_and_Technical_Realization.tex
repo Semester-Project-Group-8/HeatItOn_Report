@@ -52,15 +52,176 @@ The Sources tab functioned as expected but the possibility to edit the csv data 
 Overall the demo was a very solid proof of concept that helped us learn what we were missing for the final version while also showing us the direction we are going.
 	
 \subsection{Final Version}
+The final version represents a substantial advancement in both functionality and user experience when compared to the midterm implementation. The primary objective of this iteration was to refine usability, improve visual clarity, and introduce additional analytical capabilities while maintaining a consistent and scalable structure. 
 
+A significant improvement is the transition from a manual data refresh system to a dynamic, responsive interface. In contrast to the midterm version, where a dedicated refresh button was required to update data, the final implementation ensures that all lists and views update automatically in response to changes in the database. This enhancement improves workflow efficiency and eliminates unnecessary user interaction.
+
+The visual design of the interface has been considerably enhanced. The final version adopts a modern, structured design language with consistent color coding, clearer typography, and improved spacing. Asset cards have been redesigned to display key information in a concise and readable format, including maximum heat, production cost, CO\textsubscript{2} emissions, and electricity generation or consumption. Additionally, asset categories such as gas, oil, electric, and motor are visually distinguished through icons and labels, allowing for faster recognition and comparison.
+
+The scenario selection system has been refined and better integrated into the workflow. Instead of simple toggles, the final version introduces clearly defined scenario panels with descriptive labels such as “Peak Load,” “Eco Mode,” and “Custom Configure.” Each scenario communicates its purpose more effectively, enabling more intuitive decision-making. Furthermore, visual indicators highlight selected assets within each scenario, improving clarity during configuration.
+
+Additional control elements have been introduced, including a dedicated “Manager” button and a more prominent “Optimize” action button. The Manager section serves as a centralized interface for creating, importing, and exporting assets. These improvements contribute to a clearer workflow hierarchy, guiding the user from configuration to execution in a more structured manner.
+
+The Results tab has undergone major enhancements in both data presentation and analytical depth. A summary dashboard has been introduced at the top of the page, presenting key performance indicators such as total heat production, net electricity balance, total CO\textsubscript{2} emissions, and total production cost. These aggregated metrics provide immediate insight into optimization outcomes without requiring detailed inspection of raw data.
+
+The tabular data display has also been improved with better formatting, clearer column labeling, and pagination support for large datasets. The addition of pagination ensures that even extensive datasets remain accessible and manageable.
+
+The charting system represents one of the most significant functional improvements. While the midterm version included only basic visualizations, the final version introduces a comprehensive set of charts:
+\begin{itemize}
+\item A stacked area chart showing heat production per asset over time, including a total heat overlay
+\item A production cost per hour chart, allowing detailed financial analysis
+\item A generator share pie chart, illustrating the contribution of each asset within a selected time range
+\item An electricity usage and generation chart, displaying hourly electricity balance in MWh
+\end{itemize}
+
+These visualizations provide a deeper understanding of system behavior and allow users to analyze performance trends, cost distribution, and resource utilization more effectively. Interactivity elements, such as tooltips and time-range filtering, further enhance data exploration.
+The date and time filtering functionality has been refined, with a more structured input system for selecting precise time intervals. Filtering affects both tabular and graphical outputs, ensuring consistency across all displayed data.
+
+The Sources tab has also been expanded with important new functionality. Unlike the midterm version, the final implementation allows direct editing of source data within the table. This feature enables on-the-fly adjustments without requiring external file modification. The table design has been improved for clarity, and pagination has been introduced to handle large datasets efficiently.
+File management capabilities have been enhanced, including clearer separation between uploaded files and active data views. Import and export functions remain available but are now better integrated into the interface.
+
+Overall, the final version achieves a significantly higher level of usability, clarity, and analytical capability. The transition from a proof-of-concept interface to a polished, production-oriented design is evident across all tabs. The system now provides a comprehensive toolset for asset management, optimization execution, and result analysis, while maintaining a scalable and user-centered design approach.
 
 \section{Backend Implementation}
 \subsection{Midterm Version}
+
+The backend is implemented using ASP.NET Core 9.0 and follows a layered architectural design that emphasizes modularity, scalability, and separation of concerns. The structure consists of Controllers, Services, Interfaces, Models, and a Data layer, each responsible for a distinct part of the system functionality.
+
+
+\textbf{Architecture and Main Components}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{Images/backend-file-structure.png}
+\caption{Backend file structure showing the organization of controllers, services, interfaces, models, and data components.}
+\label{fig:backend-structure}
+\end{figure}
+
+The backend is organized into clearly defined layers:
+
+\begin{itemize}
+    \item \textbf{Controllers}: Provide RESTful API endpoints and act as the entry point for client requests. Controllers are responsible for handling HTTP requests, binding input parameters, and returning appropriate responses.
+    
+    \item \textbf{Services}: Implement the core business logic. Each service corresponds to a domain entity, such as assets, source data, and optimization results. Services coordinate data processing and communicate with the persistence layer.
+    
+    \item \textbf{Interfaces}: Define abstraction layers for both controllers and services. Generic interfaces such as \texttt{IController<TCreate, TUpdate>} and \texttt{IService<T>} enforce consistent method definitions and reduce code duplication.
+    
+    \item \textbf{Models}: Represent domain entities and map directly to database tables. Examples include \texttt{Asset}, \texttt{Source}, \texttt{Result}, \texttt{ResultList}, and \texttt{OptimizedResults}.
+    
+    \item \textbf{Data Layer}: Contains the Entity Framework database context (\texttt{BackendDbContext}) and migration files. This layer manages communication with the MySQL database.
+\end{itemize}
+
+This architecture ensures that responsibilities are clearly separated, enabling easier maintenance and extensibility.
+
+
+\textbf{API and Controller Design}
+
+The backend exposes a RESTful API through controllers that implement a generic controller interface. The interface defines standard CRUD operations:
+
+\begin{itemize}
+    \item \texttt{List()} for retrieving collections of entities
+    \item \texttt{Get(int id)} for retrieving a single entity
+    \item \texttt{Post(TCreate model)} for creating new entries
+    \item \texttt{Put(int id, TUpdate model)} for updating existing entries
+    \item \texttt{Delete(int id)} for removing entries
+\end{itemize}
+
+All controller actions are implemented asynchronously using \texttt{Task<IActionResult>}, allowing efficient handling of concurrent requests. Controllers delegate all processing tasks to the corresponding service layer, ensuring minimal logic within the API layer.
+
+
+\textbf{Business Logic Handling}
+
+All business logic is implemented within the service layer, which acts as the core processing unit of the backend. Each service implements the generic \texttt{IService<T>} interface, providing consistent operations across all entities.
+
+Specialized services, such as the \texttt{OptimizerService}, encapsulate domain-specific logic related to heat production optimization. This includes processing input data, calculating results, and coordinating interactions between assets, source data, and result data.
+
+The separation of business logic from controllers improves maintainability and enables independent testing of core functionality.
+
+
+\textbf{Data Processing and Validation}
+
+Data processing is primarily handled within the service layer. Incoming data from API requests is validated before being persisted or processed further. Validation mechanisms include:
+
+\begin{itemize}
+    \item Strongly typed C\# models for structured data representation
+    \item Parameter binding and validation features provided by ASP.NET Core
+    \item Logical validation rules implemented within service methods
+\end{itemize}
+
+This approach ensures that invalid or inconsistent data is prevented from entering the system and maintains overall data integrity.
+
+
+\textbf{Database Communication}
+
+The backend communicates with the MySQL database using Entity Framework. The \texttt{BackendDbContext} manages entity tracking, query execution, and persistence.
+
+\begin{itemize}
+    \item Models are mapped directly to database tables
+    \item LINQ is used for querying and manipulating data
+    \item Asynchronous database operations improve performance and scalability
+\end{itemize}
+
+Services interact with the database context to perform all data operations, ensuring controlled access to the persistence layer and preventing direct database access from controllers.
+
+
+\textbf{System Behavior Support}
+
+The backend supports the required system behavior by coordinating interactions between different system modules. Controllers expose endpoints for managing assets, source data, and optimization results, while services execute the corresponding logic.
+
+The inclusion of a dedicated optimization service enables the processing of time-series data for heat demand and electricity prices, supporting the generation of optimized production schedules.
+
+
+\textbf{Deployment Considerations}
+
+The backend is deployed using Docker, which provides a consistent and isolated runtime environment. Containerization ensures that dependencies, configurations, and runtime settings are standardized across development and production environments.
+
+This approach improves portability, simplifies deployment, and enhances the reliability of the backend infrastructure.
+
+
+Overall, the backend implementation follows best practices for modern web application development, emphasizing modularity, scalability, and maintainability. The layered architecture ensures that the system can effectively support the required functionality while remaining adaptable to future enhancements.
 
 \subsection{Final Version}
 
 
 \section{Data Management}
 \subsection{Midterm Version}
+Data management is implemented using a relational database approach supported by MySQL, combined with an object-relational mapping layer provided by Entity Framework.
+
+\textbf{Data Structure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{Images/db-relations.png}
+\caption{Database schema illustrating the relationships between Source, OptimizedResults, ResultList, Result, and Asset tables.}
+\label{fig:db-schema}
+\end{figure}
+
+The data model is organized into five primary tables: Source, OptimizedResults, ResultList, Result, and Asset, each representing a distinct aspect of the system domain.
+\begin{itemize}
+\item The Source table stores time-based input data, including HeatDemand, and ElectricityPrice. This structure supports time-series data used for optimization processes.
+\item The OptimizedResults table represents a container for optimization runs during the selected time period. 
+\item The ResultList table links individual time intervals to a specific optimization result through the foreign key OptimizedResultId. Each entry contains results for separate assets within an hourly time frame, with attributes such as TimeFrom and TimeTo defining the interval. 
+\item The Result table contains detailed output data generated by the optimization process. Attributes include HeatProduction, Electricity, ProductionCost, PrimaryEnergyConsumed, and CO2Produced. This table also includes foreign keys AssetId and ResultListId, establishing relationships with both Asset and ResultList. It stores the specific performance metrics for one asset in one hour.
+\item The Asset table defines the characteristics of generators or boilers, including MaxHeat, ProductionCost, CO2Emission, GasConsumption, OilConsumption, MaxElectricity, and ImageName.
+\end{itemize}
+
+The relationships between these tables follow a hierarchical structure:
+\begin{itemize}
+\item One OptimizedResults entity relates to multiple ResultList entries.
+\item One ResultList entry relates to multiple Result records.
+\item Each Result references a single Asset.
+\end{itemize}
+
+Primary keys and foreign keys ensure referential integrity across all tables. For example, Result.AssetId must correspond to a valid entry in the Asset table, and ResultList.OptimizedResultId must reference an existing optimization result.
+
+\textbf{Integration with Backend}
+
+The data structure integrates directly with the backend through Entity Framework. Each database table is mapped to a corresponding C\# model, enabling seamless interaction between the application logic and the database layer. Entity Framework provides abstraction over raw SQL queries, allowing developers to interact with the database using LINQ queries and strongly typed objects. The DbContext component manages database connections, entity tracking, and query execution, ensuring consistent data access patterns across the application. Migration tools within Entity Framework support schema evolution, allowing controlled updates to the database structure while maintaining data integrity.
+
+\textbf{Data Management Environment}
+
+The database is deployed using Docker, ensuring a consistent and reproducible environment. The use of Docker also facilitates easy deployment, testing, and version control of the data management infrastructure.
+
+Overall, the data management approach combines a well-defined relational schema, validation mechanisms, and seamless backend integration to ensure reliability, scalability, and maintainability of the system.
 
 \subsection{Final Version}
