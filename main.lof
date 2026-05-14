@@ -1,9 +1,17 @@
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces System Architecture Diagram}}{2}{figure.1.1}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Combined Frontend and Backend Class Diagram (In-Progress)}}{16}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Package UML Diagram - Five main packages of the system.}}{18}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Add Asset Activity UML Diagram - Three parts and their actions for adding a new Asset.}}{20}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Import Sources Activity UML Diagram - Three parts and their actions for importing Sources from a CSV file.}}{21}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Delete Asset Activity UML Diagram - Three parts and their actions for deleting Assets.}}{22}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Optimization Activity UML Diagram - Three parts and their actions for deleting Assets.}}{23}{figure.4.6}%
 \addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Assets tab from the demo version}}{27}{figure.5.1}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Results tab from the demo version}}{27}{figure.5.2}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

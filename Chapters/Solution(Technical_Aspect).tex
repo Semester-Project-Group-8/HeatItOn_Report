@@ -1,7 +1,7 @@
 % -------------------------------------------------------------
 % SOLUTION(TECHNICAL ASPECT)
 % -------------------------------------------------------------
-\section{Solution(Technical Aspect)}
+\noindent This section will outline the proccess of creation of the project, from project description to final solution, also describing the technical architecture. The solution started off with going through the provided Project Description. From here important parts were selected and wrote into a compact version. This compact version was suitable for conducting the verb/noun analysis where class and method candidates emerged. The class candidates are able to be transformed into CRC cards outlining the responsabilities and collaborators of each class. The CRC cards are used to create UML diagrams(Class,Package,Activity and Sequence). The different diagrams later on were used for implementation.
 
 \section{Verb-noun analysis}
 
@@ -61,7 +61,7 @@
 
 \vspace{2em}
 
-\subsection*{Classes and Methods Mapping}
+\section{Classes and Methods Mapping}
 \renewcommand{\arraystretch}{1.5} % adds vertical padding to rows
 \begin{tabularx}{\textwidth}{@{} l X @{}}
     \toprule
@@ -201,13 +201,104 @@
 
 \vspace{2em}
 
-\section*{System Design}
-
-\begin{figure}[htbp]
+\section{System Design}
+\subsection{UML Diagram - Class Diagram}
+\begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Images/UML.png} 
     \caption{Combined Frontend and Backend Class Diagram (In-Progress)}
     \label{fig:system_uml}
 \end{figure}
 
-The diagram above represents the unified system architecture. This is a preliminary version that integrates both the UI components (Frontend) and the logic/data services (Backend).
+The diagram(Figure~\ref{fig:system_uml}) represents the unified system architecture. This is a preliminary version that integrates both the UI components (Frontend) and the logic/data services (Backend).
+
+\subsection{UML Diagram - Package Diagram}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/HeatItOn-Package-Diagram.png} 
+    \caption{Package UML Diagram - Five main packages of the system.}
+    \label{fig:package_uml}
+\end{figure}
+
+The package diagram shown(Figure~\ref{fig:package_uml}) simplified the system into five packages. 
+
+The first one is the Frontend package, containing the Asset, Result and Source Managers. This is the UI of the system, with what the user will interact. The Frontend is following the Model-View-ViewModell pattern, layering the different parts of each manager. This package connects with the next package through clients.
+
+The second package, the Backend Controllers contain the CRUD(Create, Read, Update, Delete) operations of each module. Through HTTP requests these can be accessed and will call the services in the next package.
+
+Backend Services are the third package containing all the business logic(like the Optimization algorithm).
+
+The services communicate with the Database for which the connection, the fourth package, is located inside the Data layer. The database is responsible for storing elements of the fifth package(Asset, Source, Result), the models.
+
+This diagram shows a very simplified relationship with the most important parts of the overall system, giving an understanding of the overall workings and layers. Allthough its very simple, it is a good starting point for understanding the entire archtecture.
+
+These packages, in the final solution, while expanded upon greatly, are the backbone of the implementation.
+
+\subsection{UML Diagram - Activity Diagram(Add asset)}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/HeatItOn_activity_diagram_add_asset.png} 
+    \caption{Add Asset Activity UML Diagram - Three parts and their actions for adding a new Asset.}
+    \label{fig:add_asset_uml}
+\end{figure}
+The activity UML diagram(Figure~\ref{fig:add_asset_uml}) depicts the addition of a new asset by the user into the system.
+
+The activity is initiated by the user when they want to add a new asset interacting with the Asset Manager. The filled out data is then verified by the Asset Manager. If the data was filled out correctly(like having a proper name or number fields having numbers) the Asset Manager will create the Asset and send it to the DataBase, who will save it. If the data was not filled out correctly, it will reject the received data. The activity ends with the user being notified of both cases, ending it. For a successful addition the Asset Manager will also display the new Asset instantly.
+
+Adding an asset is started in the FrontEnd. The Frontend clients will call the Backend that will handle the communication with the Database where the Asset will be saved. The Frontend deals with user input and handling the data as well.
+
+This diagram helps getting an idea about how the communication, for adding Assets, works. This activity is crucial to the solution, as every Asset needs to be stored in the Database for the optimization to work.
+
+\subsection{UML Diagram - Activity Diagram(Import Sources)}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/HeatItOn_activity_diagram_import_source.png} 
+    \caption{Import Sources Activity UML Diagram - Three parts and their actions for importing Sources from a CSV file.}
+    \label{fig:import_sources_uml}
+\end{figure}
+
+The activity UML diagram(Figure~\ref{fig:import_sources_uml}) depicts the importing of one or multiple Sources stored in a Comma Separated Value(csv) file. 
+
+Importing is initiated by the user interacting with the Source Manager UI. The Source Manager then will try to find the requested csv file. If the file is found the Source Manager will try to open and read the data in the FrontEnd. After a successful opening and reading the data will be transformed into proper Source models and will be sent over through the Backend to the Database for storage, notifying the user. If the file is not found or if the file could not be opened or read properly, like if the csv is not structured properly, the importing process failes and the user is notified. The activity is concluded by notifying the user of either a successful or failed import, the former is visible by a new data set apearing in the Source Manager.
+
+This helps getting an understanding of how importing works for sources(but not only), and the workings of the Source Manager.
+
+The Source Manager and Sources are the other crucial part of the system, which without, the optimization process could not be run.
+
+\subsection{UML Diagram - Activity Diagram(Delete Asset)}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/HeatItOn_activity_diagram_delete_asset.png} 
+    \caption{Delete Asset Activity UML Diagram - Three parts and their actions for deleting Assets.}
+    \label{fig:delete_assets_uml}
+\end{figure}
+
+The activity UML diagram(Figure~\ref{fig:delete_assets_uml}) depicts the deletion of an Asset through the Asset Manager.
+
+Deletion is initiated by the user through interacting with the Asset Manager UI. The Asset Manager will try to retreive the Asset from the Database(through the Backend). If the Database finds the Asset it will return it to the Asset Manager. If the Database could not find the requested Asset, it will prompt the Asset Manager will notify the user ending the activity. If the Asset is found it will be retreived to the Asset Manager who will request its deletion from the Database. The Database deletes the Asset and the Manager will notify the user of the activity being successful, after which it ends.
+
+This activity diagram portrays another CRUD operation, in this case Deletion, in the system.
+
+This helps getting an understanding of how deletion of objects works in the system, using Assets as an
+example. Deletion is crucial the the proper workings of the system.
+
+Deletion is used with Assets, as seen on the diagram, but also with Results, where the user has the option to delete either of them.
+
+\subsection{UML Diagram - Activity Diagram(Optimize)}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/HeatItOn_activity_diagram_optimize.png} 
+    \caption{Optimization Activity UML Diagram - Three parts and their actions for deleting Assets.}
+    \label{fig:optimization_uml}
+\end{figure}
+
+The activity UML diagram(Figure~\ref{fig:optimization_uml}) depicts the optimization process.
+
+First, the optimization starts with the user, using the Asset Manager UI, selecting assets and starting the optimization process. The Asset Manager will send the selected Assets to the Optimization module, which after receiving them, will call from the Database all stored Sources up to that moment. If no Source is received it will prompt the Asset Manager to notify the user and end the activity. The Optimizer has no UI elements and is completly in the Backend. If it receives Sources, it will run the optimization algorithm, which will create a Result. The new Result is sent and stored in the Database that will notify both the Asset Manager(that in turn notifies the user) and the Result Manager that there is a new Result ready to be displayed, ending the activity.
+
+This activity diagram proves its relevancy by demonstrating the optimization activity, which is the entire purpouse of the system. While it is not enough for a full understanding of the optimization process, the diagram illustrates the different overall steps happening.
+
+Optimization is the part that interacts with every module of the system. It uses directly or indirectly every implemented Manager, and all the activity diagrams(and all their depicted actions) are just helping the optimization process depicted here.
+
+\section{System Technical Architecture}
+
