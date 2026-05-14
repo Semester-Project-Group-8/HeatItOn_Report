@@ -1,3 +1,4 @@
+
 % -------------------------------------------------------------
 % Suggested template for the SDU Software Engineering Course, 2025
 % -------------------------------------------------------------
@@ -16,6 +17,8 @@
 \usepackage{tabularx} % For tables that fit the page width
 \usepackage{booktabs} % For professional-looking lines
 \usepackage{enumitem} % For rormating lists of items
+\usepackage{float} % for better picture placement
+\usepackage[hidelinks]{hyperref} %for clickable chapters
 % -------------------------------------------------------------
 % USER VARIABLES AND DEFINITIONS
 % -------------------------------------------------------------
@@ -62,12 +65,12 @@ Zoltan Suveges – zosuv25@student.sdu.dk
 \vspace{5mm}\hrule\vspace{20mm}                               % Horizontal rule below title
 
 {\large \thegroup} \\ \vspace{2mm} 
+{\large Adela Pastekova – adpas25@student.sdu.dk} \\ \vspace{2mm} % The author
 {\large Alex Zalanyi – alzal25@student.sdu.dk} \\ \vspace{2mm} % The author
 {\large Filip Tichy – fitic25@student.sdu.dk} \\ \vspace{2mm} % The author
-{\large Adela Pastekova – adpas25@student.sdu.dk} \\ \vspace{2mm} % The author
-{\large Zoltan Suveges – zosuv25@student.sdu.dk} \\ \vspace{2mm} % The author
-{\large Melana Ohrimeca – meohr25@student.sdu.dk} \\ \vspace{2mm} % The author
 {\large Marija Savkina – masav25@student.sdu.dk} \\ \vspace{2mm} % The author
+{\large Melana Ohrimeca – meohr25@student.sdu.dk} \\ \vspace{2mm} % The author
+{\large Zoltan Suveges – zosuv25@student.sdu.dk} \\ \vspace{2mm} % The author
 
 \vfill                                                        % Fill space down to bottom of page
 {\small \today}     
@@ -87,13 +90,16 @@ Zoltan Suveges – zosuv25@student.sdu.dk
 \listoftables                                                 % Add list of tables
 
 % -------------------------------------------------------------
-% CHAPTER - ABSTRACT
+% ABSTRACT
 % -------------------------------------------------------------
-\chapter[Abstract]{Abstract}             % Short and long title versions
-\label{chap:abstract}                                            % Chapter label
-\pagenumbering{arabic}                                        % Change age numbering to arabic
+\chapter*[Abstract]{Abstract}             % Short and long title versions
+\addcontentsline{toc}{chapter}{Abstract}
+%\label{chap:abstract}                                            % Chapter label
+
 \input{Chapters/Abstract.tex}                             % Call file with chapter
 
+\newpage
+\pagenumbering{arabic}                                        % Change age numbering to arabic
 % -------------------------------------------------------------
 % CHAPTER - INTRODUCTION
 % -------------------------------------------------------------
@@ -104,7 +110,7 @@ Zoltan Suveges – zosuv25@student.sdu.dk
 % -------------------------------------------------------------
 % CHAPTER - SCRUM IMPLEMENTATION
 % -------------------------------------------------------------
-\chapter[Scum Implementation]{Scrum Implementation}             % Short and long title versions
+\chapter[Scrum Implementation]{Scrum Implementation}             % Short and long title versions
 \label{chap:scrum}                                            % Chapter label
 \input{Chapters/Scrum_Implementation.tex}                             % Call file with chapter
 
