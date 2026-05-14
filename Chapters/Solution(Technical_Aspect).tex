@@ -1,7 +1,7 @@
 % -------------------------------------------------------------
 % SOLUTION(TECHNICAL ASPECT)
 % -------------------------------------------------------------
-\noindent This section will outline the proccess of creation of the project, from project description to final solution, also describing the technical architecture. The solution started off with going through the provided Project Description. From here important parts were selected and wrote into a compact version. This compact version was suitable for conducting the verb/noun analysis where class and method candidates emerged. The class candidates are able to be transformed into CRC cards outlining the responsabilities and collaborators of each class. The CRC cards are used to create UML diagrams(Class,Package,Activity and Sequence). The different diagrams later on were used for implementation.
+\noindent This section will outline the process of creation of the project, from project description to final solution, also describing the technical architecture. The solution began with going through the provided Project Description. From here important parts were selected and wrote into a compact version. This compact version was suitable for conducting the verb/noun analysis where class and method candidates emerged. The class candidates are able to be transformed into CRC cards outlining the responsibilities and collaborators of each class. The CRC cards are used to create UML diagrams(Class,Package,Activity and Sequence). The different diagrams later on were used for implementation.
 
 \section{Verb-noun analysis}
 
@@ -227,24 +227,24 @@ The second package, the Backend Controllers, contain the CRUD(Create, Read, Upda
 
 Backend Services are the third package containing all the business logic (like the Optimization algorithm).
 
-The services communicate with the Database for which the connection, the fourth package, is located inside the Data layer. The database is responsible for storing elements of the fifth package (Asset, Source, Result), the models.
+The services communicate with the Database for which the connection, the fourth package, is located inside the Data layer. The Database is responsible for storing elements of the fifth package (Asset, Source, Result), the models.
 
 This diagram shows a very simplified relationship with the most important parts of the overall system, giving an understanding of the overall workings and layers. Although it is very simple, it is a good starting point for understanding the entire architecture.
 
 These packages, in the final solution, while expanded upon greatly, are the backbone of the implementation.
 
-\subsection{UML Diagram - Activity Diagram (Add asset)}
+\subsection{UML Diagram - Activity Diagram (Add Asset)}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Images/HeatItOn_activity_diagram_add_asset.png} 
     \caption{Add Asset Activity UML Diagram - Three parts and their actions for adding a new Asset.}
     \label{fig:add_asset_uml}
 \end{figure}
-The activity UML diagram (Figure~\ref{fig:add_asset_uml}) depicts the addition of a new asset by the user into the system.
+The activity UML diagram (Figure~\ref{fig:add_asset_uml}) depicts the addition of a new Asset by the user into the system.
 
-The activity is initiated by the user when they want to add a new asset interacting with the Asset Manager. The filled out data is then verified by the Asset Manager. If the data was filled out correctly (like having a proper name or number fields having numbers) the Asset Manager will create the Asset and send it to the DataBase, who will save it. If the data was not filled out correctly, it will reject the received data. The activity ends with the user being notified of both cases, ending it. For a successful addition the Asset Manager will also display the new Asset instantly.
+The activity is initiated by the user when they want to add a new Asset interacting with the Asset Manager. The filled out data is then verified by the Asset Manager. If the data was filled out correctly (like having a proper name or number fields having numbers) the Asset Manager will create the Asset and send it to the Database, who will save it. If the data was not filled out correctly, it will reject the received data. The activity ends with the user being notified of both cases, ending it. For a successful addition the Asset Manager will also display the new Asset instantly.
 
-Adding an asset is started in the FrontEnd. The Frontend clients will call the Backend that will handle the communication with the Database where the Asset will be saved. The Frontend deals with user input and handling the data as well.
+Adding an Asset is started in the Frontend. The Frontend clients will call the Backend that will handle the communication with the Database where the Asset will be saved. The Frontend deals with user input and handling the data as well.
 
 This diagram helps getting an idea about how the communication, for adding Assets, works. This activity is crucial to the solution, as every Asset needs to be stored in the Database for the optimization to work.
 
@@ -252,17 +252,17 @@ This diagram helps getting an idea about how the communication, for adding Asset
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Images/HeatItOn_activity_diagram_import_source.png} 
-    \caption{Import Sources Activity UML Diagram - Three parts and their actions for importing Sources from a CSV file.}
+    \caption{Import Sources Activity UML Diagram - Three parts and their actions for importing Sources from a csv file.}
     \label{fig:import_sources_uml}
 \end{figure}
 
 The activity UML diagram (Figure~\ref{fig:import_sources_uml}) depicts the importing of one or multiple Sources stored in a Comma Separated Value(csv) file. 
 
-Importing is initiated by the user interacting with the Source Manager UI. The Source Manager then will try to find the requested csv file. If the file is found the Source Manager will try to open and read the data in the FrontEnd. After a successful opening and reading the data will be transformed into proper Source models and will be sent over through the Backend to the Database for storage, notifying the user. If the file is not found or if the file cannot be opened or read properly, like if the csv is not structured properly, the importing process fails and the user is notified. The activity is concluded by notifying the user of either a successful or failed import, the former is visible by a new data set appearing in the Source Manager.
+Importing is initiated by the user interacting with the Source Manager UI. The Source Manager then will try to find the requested csv file. If the file is found the Source Manager will try to open and read the data in the Frontend. After a successful opening and reading the data will be transformed into proper Source models and will be sent over through the Backend to the Database for storage, notifying the user. If the file is not found or if the file cannot be opened or read properly, like if the csv is not structured properly, the importing process fails and the user is notified. The activity is concluded by notifying the user of either a successful or failed import, the former is visible by a new data set appearing in the Source Manager.
 
 This helps getting an understanding of how importing works for sources (but not only), and the workings of the Source Manager.
 
-The Source Manager and Sources are the other crucial part of the system, which without, the optimization process could not be run.
+The Source Manager and Sources are the other crucial part of the system, without which, the optimization process could not be run.
 
 \subsection{UML Diagram - Activity Diagram (Delete Asset)}
 \begin{figure}[H]
@@ -274,7 +274,7 @@ The Source Manager and Sources are the other crucial part of the system, which w
 
 The activity UML diagram (Figure~\ref{fig:delete_assets_uml}) depicts the deletion of an Asset through the Asset Manager.
 
-Deletion is initiated by the user through interacting with the Asset Manager UI. The Asset Manager will try to retrieve the Asset from the Database(through the Backend). If the Database finds the Asset it will return it to the Asset Manager. If the Database could not find the requested Asset, it will prompt the Asset Manager will notify the user ending the activity. If the Asset is found it will be retrieved to the Asset Manager who will request its deletion from the Database. The Database deletes the Asset and the Manager will notify the user of the activity being successful, after which it ends.
+Deletion is initiated by the user through interacting with the Asset Manager UI. The Asset Manager will try to retrieve the Asset from the Database(through the Backend). If the Database finds the Asset it will return it to the Asset Manager. If the Database could not find the requested Asset, it will prompt the Asset Manager to notify the user ending the activity. If the Asset is found it will be retrieved to the Asset Manager who will request its deletion from the Database. The Database deletes the Asset and the Manager will notify the user of the activity being successful, after which it ends.
 
 This activity diagram portrays another CRUD operation, in this case Deletion, in the system.
 
@@ -293,7 +293,7 @@ Deletion is used with Assets, as seen on the diagram, but also with Results, whe
 
 The activity UML diagram (Figure~\ref{fig:optimization_uml}) depicts the optimization process.
 
-First, the optimization starts with the user, using the Asset Manager UI, selecting assets and starting the optimization process. The Asset Manager will send the selected Assets to the Optimization module, which after receiving them, will call from the Database all stored Sources up to that moment. If no Source is received it will prompt the Asset Manager to notify the user and end the activity. The Optimizer has no UI elements and is completely in the Backend. If it receives Sources, it will run the optimization algorithm, which will create a Result. The new Result is sent and stored in the Database that will notify both the Asset Manager(that in turn notifies the user) and the Result Manager that there is a new Result ready to be displayed, ending the activity.
+First, the optimization starts with the user, using the Asset Manager UI, selecting Assets and starting the optimization process. The Asset Manager will send the selected Assets to the Optimization module, which after receiving them, will call from the Database all stored Sources up to that moment. If no Source is received it will prompt the Asset Manager to notify the user and end the activity. The Optimizer has no UI elements and is completely in the Backend. If it receives Sources, it will run the optimization algorithm, which will create a Result. The new Result is sent and stored in the Database that will notify both the Asset Manager(that in turn notifies the user) and the Result Manager that there is a new Result ready to be displayed, ending the activity.
 
 This activity diagram proves its relevancy by demonstrating the optimization activity, which is the entire purpose of the system. While it is not enough for a full understanding of the optimization process, the diagram illustrates the different overall steps happening.
 
@@ -309,22 +309,22 @@ For the system architecture, from a technical standpoint, C\# was chosen as the 
 
 \subsection*{Technology Stack}
 
-The first chosen piece was the DataBase that is running MySQL. The role of the DataBase is to store the system data independently from other parts of the system(Backend and Frontend). It stores relevant user data, using models, like the Assets, Sources, Results of each generator and Results of optimization runs. The DataBase communicates with the BackEnd using MicrosoftEntityFramework. The Frontend cannot communicate directly with the DataBase, it must do it through the BackEnd. The DataBase allows data storage that is independent from runs. The system can work with multiple users at the same time or with one user in different runs, storing all the data in the DataBase, where it will remain until deletion.
+The first chosen piece was the Database that is running MySQL. The role of the Database is to store the system data independently from other parts of the system(Backend and Frontend). It stores relevant user data, using models, like the Assets, Sources, Results of each generator and Results of optimization runs. The Database communicates with the Backend using MicrosoftEntityFramework. The Frontend cannot communicate directly with the Database, it must do it through the Backend. The Database allows data storage that is independent from runs. The system can work with multiple users at the same time or with one user in different runs, storing all the data in the Database, where it will remain until deletion.
  
-The second chosen piece of technology stack is for the FrontEnd UI. For this AvaloniaUI was chosen for its good compatibility with .NET and modularity. Besides this, the FrontEnd is following the Model-View-ViewModel(MVVM) design pattern.
+The second chosen piece of technology stack is for the Frontend UI. For this AvaloniaUI was chosen for its good compatibility with .NET and modularity. Besides this, the Frontend is following the Model-View-ViewModel(MVVM) design pattern.
 
 \subsection*{Layering}
 
-The system is divided into three main parts, Frontend, Backend and the DataBase. Each servers a different role and, besides the DataBase, they are further separated for proper readability and modularity.
+The system is divided into three main parts, Frontend, Backend and the Database. Each serves a different role and, besides the Database, they are further separated for proper readability and modularity.
 
-The FrontEnd, as stated earlier, follows the MVVM pattern. The Models, together with the Data (containing file I/O and clients) form the overall data and business layer. The View forms the presentation layer, containing all the UI elements. The ViewModel creates a connection layer between the two other parts. 
+The Frontend, as stated earlier, follows the MVVM pattern. The Models, together with the Data (containing file I/O and clients) form the overall data and business layer. The View forms the presentation layer, containing all the UI elements. The ViewModel creates a connection layer between the two other parts. 
 
-The BackEnd is following a .NET web application template. Its role is to create a connection between the FrontEnd and DataBase with an Application Programming Interface (API), and to handle overall business logic for the entire system. For modularity, this is achieved through serious layering. The Backend consists of six main parts. Controllers handle incoming/outgoing traffic to/from the DataBase and FrontEnd and will call the appropriate Services. Services contain all the business logic of the system(like optimization or add asset). Both Controllers and Services inherit from two Interfaces, as they share similarities (like CRUD operations). The Data layer is composed of two other parts, Models(storing data models) and Data(storing DB Migrations and DB Context which is the main connection point to the DB). The presentation layer is completed by the last element, Hubs, which ensures real time communication with the FrontEnd application (instantly notifies to refresh the FrontEnd). Although the BackEnd is divided into many pieces, this was necessary for modularity, readability and because of complexity as well. This way each small section is responsible of one part, making replacement easier. In this solution, if one wants to hypothetically change the entire optimization algorithm, they only need to rework the Optimization Service, without having to touch any other parts.
+The Backend is following a .NET web application template. Its role is to create a connection between the Frontend and Database with an Application Programming Interface (API), and to handle overall business logic for the entire system. For modularity, this is achieved through serious layering. The Backend consists of six main parts. Controllers handle incoming/outgoing traffic to/from the Database and Frontend and will call the appropriate Services. Services contain all the business logic of the system(like optimization or add Asset). Both Controllers and Services inherit from two Interfaces, as they share similarities (like CRUD operations). The Data layer is composed of two other parts, Models(storing data models) and Data(storing DB Migrations and DB Context which is the main connection point to the DB). The presentation layer is completed by the last element, Hubs, which ensures real time communication with the Frontend application (instantly notifies to refresh the Frontend). Although the Backend is divided into many pieces, this was necessary for modularity, readability and because of complexity as well. This way each small section is responsible of one part, making replacement easier. In this solution, if one wants to hypothetically change the entire optimization algorithm, they only need to rework the Optimization Service, without having to touch any other parts.
 
 \subsection*{Architectural Style}
 
-The project follows all major design principles. The main set of principles that the project adheres to, is SOLID. This happens in both FrontEnd and BackEnd and is visible in many parts, like interfaces or being able to add new features without having to change code. SOLID principles help create an Object-Oriented design. But besides these, the project follows DRY (Do not Repeat Yourself), KISS  (Keep It Simple, Stupid), YAGNI (You Aren't Gonna Need It) and SoC (Separation of Concerns).
+The project follows all major design principles. The main set of principles that the project adheres to, is SOLID. This happens in both Frontend and Backend and is visible in many parts, like interfaces or being able to add new features without having to change code. SOLID principles help create an Object-Oriented design. But besides these, the project follows DRY (Do not Repeat Yourself), KISS  (Keep It Simple, Stupid), YAGNI (You Aren't Gonna Need It) and SoC (Separation of Concerns).
 
-The technology stack, the layering and the architectural style used are all necessary for the proper running of the system. While the technology stack was kept simple by only using what was necessary for achieving requirements, the layering and style help build a good quality project that is easy to understand, change and complete. But extensive layering helps also following the style, by breaking up the large task into small sections creating a \textit{Divide et impera} style of development, making it easier to adhere to the principles.  
+The technology stack, the layering and the architectural style used are all necessary for the proper running of the system. While the technology stack was kept simple by only using what was necessary for achieving requirements, the layering and style help build a good quality project that is easy to understand, change and complete. But extensive layering also helps following the style, by breaking up the large task into small sections creating a \textit{Divide et impera} style of development, making it easier to adhere to the principles.  
 
 
