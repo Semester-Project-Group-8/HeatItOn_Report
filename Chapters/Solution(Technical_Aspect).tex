@@ -299,9 +299,29 @@ This activity diagram proves its relevancy by demonstrating the optimization act
 
 Optimization is the part that interacts with every module of the system. It uses directly or indirectly every implemented Manager, and all the activity diagrams(and all their depicted actions) are just helping the optimization process depicted here.
 
-\subsection{UML Diagram - Sequence Diagram}
+\subsection{UML Diagram - Sequence Diagram (Optimize)}
 
-This later...
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/Sequence_diagram.drawio.png}
+    \caption{Sequence UML diagram of optimization process}
+    \label{fig:optimization_sequence}
+\end{figure}
+
+The sequence UML diagram (Figure~\ref{fig:optimization_sequence}) depicts the optimization process. 
+
+The participants are: User, Frontend UI, `OptimizerController`, `OptimizerManager` (runs the algorithm), `ResultManager` (saves results and sends notifications), `BackendHub` (SignalR), and `OptimizedResultsController` (for later retrieval). The flow is: the user clicks Optimize in the frontend; the frontend sends the selected assets to `OptimizerController` with `POST /Optimize`; `OptimizerController` calls `OptimizerManager` to run the optimization; `OptimizerManager` produces an `OptimizedResults` object and gives it to `ResultManager` to save; `ResultManager` writes the result to the database and asynchronously notifies clients via `BackendHub.SendAsync("ReceiveMessage","Optimized")`; the controller returns either the full result or a small confirmation (`SavedResultInfo` with the new id) to the frontend; the frontend can then request the stored result with `GET /OptimizedResults/{id}` from `OptimizedResultsController` to display the full persisted data. If the optimizer cannot find required source data, it returns an error/notification back to the frontend and the activity ends with the user being informed. In the diagram the `OptimizerManager` and `ResultManager` are shown as manager boxes that group the backend logic (they represent the real services and saving/notification steps) so the sequence stays easy to read while matching the actual system behavior.
+
+\subsection{UML Diagram - Sequence Diagram (Refresh)}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Images/Sequence_diagram_refresh.drawio.png}
+    \caption{Sequence UML diagram of refreshing process}
+    \label{fig:refresh_sequence}
+\end{figure}
+
+The refresh sequence diagram shows how live updates reach the UI: when the backend finishes a data-changing operation (for example saving an optimized result), the responsible controller or manager broadcasts a short notification via the SignalR hub using SendAsync(...) (an asynchronous, non-blocking call). Connected frontend clients receive the hub message (ReceiveMessage) and then request the latest data from the backend API (for example GET /OptimizedResults/{id} or a generic reload endpoint). The backend returns the updated payload and the frontend updates the view with the fresh data. The diagram deliberately separates notification (push) from data retrieval (pull), and implies a simple error path where a failed reload or missing result is surfaced to the user or retried.
 
 \section{System Technical Architecture}
 
