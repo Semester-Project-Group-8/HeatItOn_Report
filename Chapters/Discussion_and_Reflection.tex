@@ -1,27 +1,22 @@
 % -------------------------------------------------------------
 % DISCUSSION AND REFLECTION
 % -------------------------------------------------------------
-\section{Discussion and Reflection}
-% -------------------------------------------------------------
-% DISCUSSION AND REFLECTION
-% -------------------------------------------------------------
 \hspace*{1cm} This chapter discusses the software engineering practices and processes adopted throughout the project. It also contains potential future work that could further improve the product. 
 
 \section{Scrum}
-\hspace*{1cm} ``Scrum is a lightweight framework that helps people, teams and organizations generate value through adaptive solutions for complex problems.''\cite{scrumguide} One of Scrum's core principles is the division of work into sprints, which usually last one or two weeks. ``All the work necessary to achieve the Product Goal, including Sprint Planning, Daily Scrums, Sprint Review, and Sprint Retrospective, happen within Sprints.''\cite{scrumguide}
+\hspace*{1cm} ``Scrum is a lightweight framework that helps people, teams and organizations generate value through adaptive solutions for complex problems.''\cite{scrumguide} Reflecting on our use of Scrum, the framework had a positive impact on the team's workflow and collaboration. Compared to the previous semester project, where the work was less structured, Scrum introduced a level of organization that proved genuinely useful to the team.
 
-\begin{itemize}
-    \item Sprint Planning took place on either Fridays or Mondays, depending on the team's availability. During these sessions, pre-planned tasks were moved from the backlog to the current sprint in Jira, where they were assigned to team members and estimated using story points. This practice led to better team organization, improved communication, and a clearer structure that kept the workflow predictable. 
-    \item Daily Scrums took place on Mondays, Wednesdays, and Fridays. During these short 10--15 minute sessions, each team member addressed their accomplishments, struggles, and future plans.
-    \item Sprint Review took place at the end of each sprint. Each team member summarized their individual participation, struggles, and opinions on the sprint. Following that, the Scrum Master provided an overall summary of the sprint's accomplishments while assessing completed and incomplete tasks. The session concluded with a review of the sprint as a whole.
-    \item Sprint Retrospective took place immediately after the Sprint Review. Using a dedicated document in Jira, the team filled out a simple table with three columns: Start Doing, Stop Doing, and Keep Doing. Each team member added their thoughts to each column, after which the entries were discussed together as a group. 
-\end{itemize}
+Sprint Planning helped the team stay aligned by dividing tasks early and estimating effort through story points, which made it easier to identify when a sprint was becoming overloaded. Daily Scrums, held two times a week, improved our cooperation. Team members were more aware of each other's progress and blockers, which reduced situations where work was duplicated or misunderstood.
+
+The Sprint Retrospective proved to be helpful for the team. Using the Start Doing, Stop Doing, and Keep Doing tables in Jira, the team was able to identify and discuss issues such as reviews being rushed, tasks lacking clear descriptions, and errors that made it past the review stage. Based on this specific changes were agreed on for the following sprint. This led to gradual but visible improvements in how the team cooperated over time.
+
+Overall, Scrum contributed to better organisation, more open communication throughout the project.
 
 \section{Requirements Engineering}
 \hspace*{1cm} ``Requirements engineering is the process of understanding and defining what services are required from the system and identifying the constraints on the system's operation and development.''\cite{scrumguide} Practises used during this project:
 \begin{itemize}
-    \item User stories - Kept focus on problems from user perspective
-    \item Product Backlog - Provided a full and organised list of all tasks
+    \item User stories - Helped the team understand the user perspective and ensure the application was developed with real user needs in mind, contributing to a more user-friendly product
+    \item Product Backlog - Provided a full and organised list of all tasks in one place, making it easier to manage and prioritise work across the project
     \item Functional requirements - Ensured all members of team understood what the software is supposed to do
     \item Non-functional requirements - Ensured all members of team understood the quality standard the software needed to meet
     \item Story points - Estimated the effort for all the tasks
@@ -32,14 +27,16 @@
 \hspace*{1cm} In the future, all of these practices will be used again. User stories will be written in more detail, the product backlog will be prepared more thoroughly at the beginning of the project, and reviews will be taken more seriously.
 
 \section{Refactoring}
-\hspace*{1cm} Throughout the project, several refactoring improvements were made to keep the codebase clean and maintainable. CSV-related functionality was combined into a single unified class to reduce duplication. A centralized error handler was introduced, removing repetitive try-catch blocks from services and controllers. Data annotations in the models were expanded for better input validation, and interfaces were added to improve code structure. Unused imports were removed, formatting was cleaned up, and inheritance structures were reviewed and adjusted where needed.\section{Code review}
+\hspace*{1cm} Throughout the project, several refactoring improvements were made to keep the codebase clean and maintainable. CSV-related functionality was combined into a single unified class to reduce duplication. A centralized error handler was introduced, removing repetitive try-catch blocks from services and controllers. Data annotations in the models were expanded for better input validation, and interfaces were added to improve code structure. Unused imports were removed, formatting was cleaned up, and inheritance structures were reviewed and adjusted where needed.
+
+\section{Code review}
 \hspace*{1cm} During this project, two reviewers were assigned to every task in Jira and GitHub. Both had to either approve or request changes, and all issues had to be resolved before merging the work into the main branch. This practice helped improve overall code quality and catch bugs early in the process.
 
-However, this practice came with some challenges. Some reviews were delayed or not done properly enough, which occasionally led to mistakes slipping through. The team addressed these issues to prevent them from happening in the future.
+However, this practice came with some challenges. Early in the project, some reviews were delayed or not done properly, which occasionally led to mistakes slipping through. To address this, the team introduced a deadline system midway through the project. All tasks had to be completed by Wednesday of the second sprint week, and all reviews had to be finished by the following Thursday. This was not only to prevent reviews from being rushed at the last minute, but also to ensure Fridays could be dedicated fully to the Sprint Review and Retrospective, rather than still catching up on unfinished work.
 
 \section{Testing}
 \hspace*{1cm} During the project, unit tests were written for every task that involved business logic. Testing was part of the Definition of Done, meaning tasks could not go for review until the necessary tests were written.
 
 Manual end-to-end testing was conducted to ensure the application ran and behaved as expected. For tasks involving the database, Postman was used to test every endpoint after new code was added or modified.
 
-As unit testing was a relatively new practice for most team members, it was occasionally forgotten and done retrospectively, or not completed properly due to lack of experience.
+Unit testing proved to be one of the more challenging parts of the project, as it was a relatively new practice for most team members. Early on, tests were occasionally forgotten and written retrospectively, or not done properly due to inexperience. Over time, however, the team became more comfortable with writing tests along with their implementation. Unit tests played an important role in catching bugs early in the code and verifying that each part of the code worked as expected on its own. In future projects, the team will try to adopt a habit of writing tests from the start, and invest more time in reviewing test quality alongside code quality.
