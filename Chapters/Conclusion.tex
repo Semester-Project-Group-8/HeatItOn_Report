@@ -1,26 +1,12 @@
-% -------------------------------------------------------------
-% CONCLUSION
-% -------------------------------------------------------------
 \section{Conclusion}
+\hspace*{1cm} HeatItOn is a utility in the city of Heatington, that supplies heat to approximately 1600 buildings through a district heating network. Before this project, heat production was planned manually, making it difficult to always select the most efficient combination of production units. The goal was to replace this manual process with an automated optimization system that was capable of generating heat production schedules that meet demand at all times while minimizing operational costs.
 
-\hspace*{1cm} HeatItOn is a utility in the city of Heatington that supplies heat to approximately 1600 buildings. Currently, heat production is planned manually, which makes it difficult to always choose the best combination of production units. The goal of this project was to develop an optimization system that automatically generates heat production schedules, minimizing costs while ensuring heat demand is met at all times. 
+\hspace*{1cm} The system was built around five core modules. The Optimizer, Data Visualization, Asset Manager, Source Data Manager, and Result Data Manager, each responsible for a specific role within the application. The architecture followed a clear separation between Frontend, Backend, and Database. Frontend was built using AvaloniaUI following the MVVM pattern, the Backend implemented in ASP.NET Core 9.0 and the Database running MySQL through Entity Framework. Design principles such as SOLID, DRY, and Separation of Concerns were applied throughout the project, ensuring the code remained clear and maintainable.
 
-The system was built around five core modules:
-\begin{itemize}
-    \item Optimizer
-    \item Data Visualization
-    \item Asset Manager
-    \item Source Data Manager
-    \item Result Data Manager
-\end{itemize}
-Each handling a distinct responsibility within the application. \\
+\hspace*{1cm} Both required scenarios were successfully implemented. \\
+Scenario 1 covered a heat only network with three gas boilers and one oil boiler, where the system prioritized cheaper units and reserved the oil boiler for peak demand periods. Maintenance scheduling was also handled, with one gas boiler taken offline for a window of 30 to 60 hours. \\
+Scenario 2 introduced electricity production, working with two gas boilers, a gas motor, and an electric boiler. The optimizer calculated net production costs on an hourly basis by comparing each unit's production cost against the current electricity price, choosing to sell electricity when prices were high and consume it when prices were low. \\
+In addition, a custom scenario was implemented, giving users control over which assets are included in the optimization.
 
-\hspace*{1cm}Both scenarios were successfully implemented 
-
-Scenario 1 utilized a single district heating network with three gas boilers and one oil boiler, prioritizing the cheapest units first while reserving the oil boiler for peak demand. Maintenance scheduling was also handled, with one gas boiler taken offline for a period of 30 to 60 hours.
-
-Scenario 2 worked with two gas boilers, one gas motor, and one electric boiler. The system calculated net production costs hourly and selected units based on electricity prices, selling electricity when prices were high and buying when prices were low.
-
-A custom scenario was also implemented, allowing the user to manually select which assets to include in the optimization.
-The final product successfully replaced a manual planning process with an automated solution. 
-In terms of future work, the system could be extended by integrating live electricity prices from Energinet.dk
+\hspace*{1cm} The final product successfully addressed the original problem statement. Team managed to deliver an automated optimization system that replaces manual planning. \\
+Looking ahead, the system could be further extended by integrating live electricity prices from Energinet.dk, enabling or disabling units directly from the UI.
