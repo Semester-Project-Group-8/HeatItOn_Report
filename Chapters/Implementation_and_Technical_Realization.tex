@@ -171,9 +171,9 @@ This approach improves portability, simplifies deployment, and enhances the reli
 Overall, the backend implementation follows best practices for modern web application development, emphasizing modularity, scalability, and maintainability. The layered architecture ensures that the system can effectively support the required functionality while remaining adaptable to future enhancements.
 
 \subsection{Final Version}
-The final backend version extends the original layered ASP.NET Core architecture with additional runtime functionality and tighter system integration. Two supporting layers were formalized and integrated to improve maintainability and consistency: a centralized exception-handling middleware and a stronger `Interfaces` layer.
+The final backend version extends the original layered ASP.NET Core architecture with additional runtime functionality and tighter system integration. We introduced two supporting components: a centralized exception-handling middleware and interface-based service contracts that define abstraction boundaries between controllers and services.
 
-These additions work together with the existing layers as follows: controllers accept HTTP requests and delegate work to services; services implement business logic and interact with the data layer (EF `BackendDbContext`); both controllers and services rely on the `Interfaces` layer for abstraction and dependency injection; the `ExceptionHandlingMiddleware` sits early in the request pipeline, catching exceptions from controllers and services, logging them, mapping domain errors to HTTP status codes, and returning compact JSON error responses. As a result, many local try/catch blocks were removed and method implementations became simpler.
+These additions work together with the existing layers as follows: controllers accept HTTP requests and delegate work to services; services implement business logic and interact with the data layer (EF `BackendDbContext`); both controllers and services rely on the `Interfaces` abstraction and dependency injection; the `ExceptionHandlingMiddleware` sits early in the request pipeline, catching exceptions from controllers and services, logging them, mapping domain errors to HTTP status codes, and returning compact JSON error responses. As a result, many local try/catch blocks were removed and method implementations became easily readable.
 
 \begin{itemize}
     \item \textbf{Exception handling}: Centralized via a custom middleware (\texttt{ExceptionHandlingMiddleware}) that intercepts exceptions thrown by controllers and services, logs them, maps domain errors to appropriate HTTP status codes, and returns a compact JSON payload (for example \texttt{\{ "error": "<message>", "stackTrace": "<stackTrace>" \}}) with \texttt{Content-Type: application/json}. This provides consistent, machine-readable error responses for clients and prevents raw error details from leaking.
@@ -188,8 +188,8 @@ These additions work together with the existing layers as follows: controllers a
             \item \texttt{Delete(int id)} for removing entries
         \end{itemize}
     \end{itemize}
-    \item \textbf{Controllers}: Handle request/response concerns and remain thin — delegating business rules to services and relying on interfaces for testability.
-    \item \textbf{Services}: Contain core business logic, validate inputs, interact with the data layer, and throw well-defined domain exceptions when needed. They do not implement HTTP concerns or repeated try/catch logic anymore.
+    \item \textbf{Controllers}: Handle request/response concerns and remain thin — delegating business rules to services and relying on interfaces for testability, validate inputs.
+    \item \textbf{Services}: Contain core business logic, interact with the data layer, and throw well-defined domain exceptions when needed. They do not implement HTTP concerns or repeated try/catch logic anymore.
     \item \textbf{Data layer}: The Entity Framework \texttt{BackendDbContext} and related repositories/models remain responsible for persistence and are used by services through interface-driven abstractions.
 \end{itemize}
 
