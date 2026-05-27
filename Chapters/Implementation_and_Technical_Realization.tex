@@ -104,8 +104,6 @@ The backend is organized into clearly defined layers:
     
     \item \textbf{Services}: Implement the core business logic. Each service corresponds to a domain entity, such as assets, source data, and optimization results. Services coordinate data processing and communicate with the persistence layer.
     
-    \item \textbf{Interfaces}: Define abstraction layers for both controllers and services. Generic interfaces such as \texttt{IController<TCreate, TUpdate>} and \texttt{IService<T>} enforce consistent method definitions and reduce code duplication.
-    
     \item \textbf{Models}: Represent domain entities and map directly to database tables. Examples include \texttt{Asset}, \texttt{Source}, \texttt{Result}, \texttt{ResultList}, and \texttt{OptimizedResults}.
     
     \item \textbf{Data Layer}: Contains the Entity Framework database context (\texttt{BackendDbContext}) and migration files. This layer manages communication with the MySQL database.
@@ -116,17 +114,9 @@ This architecture ensures that responsibilities are clearly separated, enabling 
 
 \textbf{API and Controller Design}
 
-The backend exposes a RESTful API through controllers that implement a generic controller interface. The interface defines standard CRUD operations:
+During the midterm the backend exposed basic REST endpoints (CRUD) implemented ad-hoc, these were formalized in the final version through generic controller/service interfaces (see the \textbf{Final Version} subsection).
 
-\begin{itemize}
-    \item \texttt{List()} for retrieving collections of entities
-    \item \texttt{Get(int id)} for retrieving a single entity
-    \item \texttt{Post(TCreate model)} for creating new entries
-    \item \texttt{Put(int id, TUpdate model)} for updating existing entries
-    \item \texttt{Delete(int id)} for removing entries
-\end{itemize}
-
-All controller actions are implemented asynchronously using \texttt{Task<IActionResult>}, allowing efficient handling of concurrent requests. Controllers delegate all processing tasks to the corresponding service layer, ensuring minimal logic within the API layer.
+All controller actions are implemented asynchronously using \texttt{Task<IActionResult>}, allowing efficient handling of concurrent requests. Controllers delegate processing tasks to the service layer, keeping the API layer thin and focused on HTTP concerns.
 
 
 \textbf{Business Logic Handling}
@@ -181,7 +171,27 @@ This approach improves portability, simplifies deployment, and enhances the reli
 Overall, the backend implementation follows best practices for modern web application development, emphasizing modularity, scalability, and maintainability. The layered architecture ensures that the system can effectively support the required functionality while remaining adaptable to future enhancements.
 
 \subsection{Final Version}
+The final backend version extends the original layered ASP.NET Core architecture with additional runtime functionality and tighter system integration. We introduced two supporting components: a centralized exception-handling middleware and interface-based service contracts that define abstraction boundaries between controllers and services.
 
+These additions work together with the existing layers as follows: controllers accept HTTP requests and delegate work to services; services implement business logic and interact with the data layer (EF `BackendDbContext`); both controllers and services rely on the `Interfaces` abstraction and dependency injection; the `ExceptionHandlingMiddleware` sits early in the request pipeline, catching exceptions from controllers and services, logging them, mapping domain errors to HTTP status codes, and returning compact JSON error responses. As a result, many local try/catch blocks were removed and method implementations became easily readable.
+
+\begin{itemize}
+    \item \textbf{Exception handling}: Centralized via a custom middleware (\texttt{ExceptionHandlingMiddleware}) that intercepts exceptions thrown by controllers and services, logs them, maps domain errors to appropriate HTTP status codes, and returns a compact JSON payload (for example \texttt{\{ "error": "<message>", "stackTrace": "<stackTrace>" \}}) with \texttt{Content-Type: application/json}. This provides consistent, machine-readable error responses for clients and prevents raw error details from leaking.
+    \item \textbf{Interfaces}: Provide clear abstraction boundaries for controllers and services (e.g., \texttt{IController<TCreate,TUpdate>}, \texttt{IService<T>}). Using interfaces enables dependency injection, easier unit testing, and consistent error-typing so the middleware can map domain exceptions to appropriate HTTP responses.
+    \begin{itemize}
+        \item The generic controller interface formalizes standard CRUD operations used across controllers:
+        \begin{itemize}
+            \item \texttt{List()} for retrieving collections of entities
+            \item \texttt{Get(int id)} for retrieving a single entity
+            \item \texttt{Post(TCreate model)} for creating new entries
+            \item \texttt{Put(int id, TUpdate model)} for updating existing entries
+            \item \texttt{Delete(int id)} for removing entries
+        \end{itemize}
+    \end{itemize}
+    \item \textbf{Controllers}: Handle request/response concerns and remain thin — delegating business rules to services and relying on interfaces for testability, validate inputs.
+    \item \textbf{Services}: Contain core business logic, interact with the data layer, and throw well-defined domain exceptions when needed. They do not implement HTTP concerns or repeated try/catch logic anymore.
+    \item \textbf{Data layer}: The Entity Framework \texttt{BackendDbContext} and related repositories/models remain responsible for persistence and are used by services through interface-driven abstractions.
+\end{itemize}
 
 \section{Data Management}
 \subsection{Midterm Version}
@@ -225,3 +235,4 @@ The database is deployed using Docker, ensuring a consistent and reproducible en
 Overall, the data management approach combines a well-defined relational schema, validation mechanisms, and seamless backend integration to ensure reliability, scalability, and maintainability of the system.
 
 \subsection{Final Version}
+The recent database updates were relatively minor and focused on strengthening data integrity. We refined several model-level constraints using data-annotation attributes (e.g., Required, Range, MaxLength) to ensure that invalid or inconsistent values cannot be stored. Additionally, a unique constraint was introduced for the Source entity through the DbContext configuration, preventing duplicate source entries from being created. These adjustments improve validation and consistency across the system without modifying the core schema.
