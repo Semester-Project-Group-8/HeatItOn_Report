@@ -1,7 +1,7 @@
 % -------------------------------------------------------------
 % SOLUTION(TECHNICAL ASPECT)
 % -------------------------------------------------------------
-\noindent This section will outline the process of creation of the project, from project description to final solution, also describing the technical architecture. The solution began with going through the provided Project Description. From here important parts were selected and wrote into a compact version. This compact version was suitable for conducting the verb/noun analysis where class and method candidates emerged. The class candidates are able to be transformed into CRC cards outlining the responsibilities and collaborators of each class. The CRC cards are used to create UML diagrams(Class,Package,Activity and Sequence). The different diagrams later on were used for implementation.
+\noindent This section will outline the process of creation of the project, from project description to final solution, also describing the technical architecture. The solution began with going through the provided Project Description. From here important parts were selected and wrote into a compact version. This compact version was suitable for conducting the verb/noun analysis where class and method candidates emerged. The class candidates are able to be transformed into CRC cards outlining the responsibilities and collaborators of each class. The CRC cards are used to create UML diagrams (Class, Package, Activity and Sequence). The different diagrams later on were used for implementation.
 
 \section{Verb-noun analysis}
 
@@ -305,13 +305,13 @@ This later...
 
 \section{System Technical Architecture}
 
-For the system architecture, from a technical standpoint, C\# was chosen as the base technology stack. This was chosen as its .NET 9.0 version is suitable for the development of this system with its simplicity, the familiarity of the team and its object-oriented imperative style. Every other piece of technology is related to .NET and was chosen based on their respective compatibility with the language.
+For the system architecture, from a technical standpoint, C\# \cite{csharp} was chosen as the base technology stack. This was chosen as its .NET 9.0 version is suitable for the development of this system with its simplicity, the familiarity of the team and its object-oriented imperative style. Every other piece of technology is related to .NET and was chosen based on their respective compatibility with the language.
 
 \subsection*{Technology Stack}
 
-The first chosen piece was the Database that is running MySQL. The role of the Database is to store the system data independently from other parts of the system(Backend and Frontend). It stores relevant user data, using models, like the Assets, Sources, Results of each generator and Results of optimization runs. The Database communicates with the Backend using MicrosoftEntityFramework. The Frontend cannot communicate directly with the Database, it must do it through the Backend. The Database allows data storage that is independent from runs. The system can work with multiple users at the same time or with one user in different runs, storing all the data in the Database, where it will remain until deletion.
+The first chosen piece was the Database that is running MySQL \cite{dubois2013mysql}. The role of the Database is to store the system data independently from other parts of the system(Backend and Frontend). It stores relevant user data, using models, like the Assets, Sources, Results of each generator and Results of optimization runs. The Database communicates with the Backend using MicrosoftEntityFramework. The Frontend cannot communicate directly with the Database, it must do it through the Backend. The Database allows data storage that is independent from runs. The system can work with multiple users at the same time or with one user in different runs, storing all the data in the Database, where it will remain until deletion.
  
-The second chosen piece of technology stack is for the Frontend UI. For this AvaloniaUI was chosen for its good compatibility with .NET and modularity. Besides this, the Frontend is following the Model-View-ViewModel(MVVM) design pattern.
+The second chosen piece of technology stack is for the Frontend UI. For this AvaloniaUI was chosen for its good compatibility with .NET and modularity. Besides this, the Frontend is following the Model-View-ViewModel (MVVM) design pattern.
 
 \subsection*{Layering}
 
