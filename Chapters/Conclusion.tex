@@ -2,5 +2,11 @@
 % CONCLUSION
 % -------------------------------------------------------------
 \section{Conclusion}
+\hspace*{1cm} HeatItOn is a utility in the city of Heatington that supplies heat to approximately 1,600 buildings through a centralized district heating network. Prior to this project, heat production was planned manually, making it difficult to consistently select the most efficient combination of production units. The goal was to replace this manual process with an automated optimization system capable of generating heat production schedules that consistently meets heat demand while minimizing operational costs.
 
-\noindent This is our Conclusion.
+\hspace*{1cm} The system was built around five core modules: the Optimizer, Data Visualization, Asset Manager, Source Data Manager, and Result Data Manager. The architecture followed a clear 
+separation between the Frontend, Backend, and Database layers.
+
+\hspace*{1cm} Both required scenarios were successfully implemented. Scenario 1 covered a heat-only network, where the system prioritized cheaper units and handled maintenance scheduling. Scenario 2 introduced electricity production, where the optimizer calculated net production costs on an hourly basis to determine when to sell or consume electricity. A custom scenario was also implemented, giving users control over which assets are included in the optimization.
+
+\hspace*{1cm} The final product successfully addressed the original problem statement, delivering an automated optimization system that replaces manual planning.
