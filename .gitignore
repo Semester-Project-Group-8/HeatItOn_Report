@@ -7,3 +7,14 @@
 *.fdb_latexmk
 *.fls
 *Zone.Identifier
+main.fls
+main.lof
+main.bbl
+main.blg
+main.run.xml
+main.nav
+main.snm
+main.vrb
+main.toc
+main.fdb_latexmk
+.vscode
