@@ -1,7 +1,7 @@
 % -------------------------------------------------------------
 % SOLUTION(TECHNICAL ASPECT)
 % -------------------------------------------------------------
-\noindent This section will outline the process of creation of the project, from project description to final solution, also describing the technical architecture. The solution began with going through the provided Project Description. From here important parts were selected and wrote into a compact version. This compact version was suitable for conducting the verb/noun analysis where class and method candidates emerged. The class candidates are able to be transformed into CRC cards outlining the responsibilities and collaborators of each class. The CRC cards are used to create UML diagrams (Class, Package, Activity and Sequence). The different diagrams later on were used for implementation.
+\noindent This chapter outlines the steps undertaken to achieve the final solution, starting from the project description, describing the technical architecture in the process. The development process began with going through the provided Project Description, and rewriting it into a shorter version, keeping only the most important parts. The compact version was suitable for conducting the verb/noun analysis where class and method candidates emerged. The class candidates are able to be transformed into CRC cards outlining the responsibilities and collaborators of each class. The CRC cards are used to provide UML diagrams(Class,Package,Activity and Sequence).
 
 \section{Verb-noun analysis}
 
@@ -202,6 +202,7 @@
 \vspace{2em}
 
 \section{System Design}
+\noindent The system design, implementing the five modules(OPT,DV,AM,SDM and RDM), focuses on distinguishing data, services and the presentation layer. This was achieved by storing data in a Database, having a Backend API for services and a Frontend UI for the presentation layer. The layering helps create a modular solution, that is able to implement every module in a logical way, without affecting one another.
 \subsection{UML Diagram - Class Diagram}
 \begin{figure}[H]
     \centering
@@ -227,11 +228,13 @@ The second package, the Backend Controllers, contain the CRUD(Create, Read, Upda
 
 Backend Services are the third package containing all the business logic (like the Optimization algorithm).
 
-The services communicate with the Database for which the connection, the fourth package, is located inside the Data layer. The Database is responsible for storing elements of the fifth package (Asset, Source, Result), the models.
+The forth package is the connection with the Database. It is stored in the Data layer of the Backend. The role of the package is to allow communication between the services and the Database.
+
+The fifth and final package consists of the DB Models(Asset, Source, Result) that are stored in the Database.
 
 This diagram shows a very simplified relationship with the most important parts of the overall system, giving an understanding of the overall workings and layers. Although it is very simple, it is a good starting point for understanding the entire architecture.
 
-These packages, in the final solution, while expanded upon greatly, are the backbone of the implementation.
+The five packages are the backbone of the implementation. Allthough they are much more detailed, this simplified version helps understanding the workings of the solution.
 
 \subsection{UML Diagram - Activity Diagram (Add Asset)}
 \begin{figure}[H]
@@ -356,7 +359,7 @@ The Backend is following a .NET web application template. Its role is to create 
 
 \subsection*{Architectural Style}
 
-The project follows all major design principles. The main set of principles that the project adheres to, is SOLID. This happens in both Frontend and Backend and is visible in many parts, like interfaces or being able to add new features without having to change code. SOLID principles help create an Object-Oriented design. But besides these, the project follows DRY (Do not Repeat Yourself), KISS  (Keep It Simple, Stupid), YAGNI (You Aren't Gonna Need It) and SoC (Separation of Concerns).
+The implementation follows multiple coding and design principles. The main set of principles that the project adheres to, is SOLID. This happens in both Frontend and Backend and is visible in many parts, like interfaces or being able to add new features without having to change code. SOLID principles help create an Object-Oriented design. But besides these, the project follows DRY (Do not Repeat Yourself), KISS  (Keep It Simple, Stupid), YAGNI (You Aren't Gonna Need It) and SoC (Separation of Concerns).
 
 The technology stack, the layering and the architectural style used are all necessary for the proper running of the system. While the technology stack was kept simple by only using what was necessary for achieving requirements, the layering and style help build a good quality project that is easy to understand, change and complete. But extensive layering also helps following the style, by breaking up the large task into small sections creating a \textit{Divide et impera} style of development, making it easier to adhere to the principles.  
 
