@@ -162,3 +162,139 @@ System Design -- Class Sequence Diagram (Solution (Technical Aspect)) & Marija S
 System Technical Architecture, Package Diagram, Activity Diagrams (Solution (Technical Aspect)) & Alex Zalanyi & Adela Pastekova & Melana Ohrimeca \\ \hline
 Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
 \end{longtable}
+
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{|p{1.5cm}|p{2cm}|p{5cm}|p{4cm}|}
+
+\hline
+%HEADER
+\textbf{Project} & \textbf{Folder} & \textbf{File} & \textbf{Author} \\
+\hline
+\endfirsthead
+
+\hline
+\textbf{Project} & \textbf{Folder} & \textbf{File} & \textbf{Author} \\
+\hline
+\endhead
+
+\multicolumn{4}{r}{\textit{Table continued on next page}} \\
+\endfoot
+
+\endlastfoot
+%BACKEND
+\multirow{21}{*}{Backend}
+%data
+ & Data & BackendDbContext.cs & Zoltan Suveges\\
+\cline{2-4}%line from 2 to 4
+%controllers
+&\multirow{6}{*}{Controllers} & AssetsController.cs & Marija Savkina\\
+\cline{3-4}
+& & OptimizedResultsController.cs & Zoltan Suveges\\
+\cline{3-4}
+& & OptimizerController.cs & Alex Zalanyi\\
+\cline{3-4}
+& & ResultByHourController.cs & Filip Tichy\\
+\cline{3-4}
+& & ResultController.cs & Melana Ohrimeca\\
+\cline{3-4}
+& & SourceController.cs & Adela Pastekova\\
+\cline{2-4}
+%hubs
+& Hubs & BackendHubs.cs & Zoltan Suveges\\
+\cline{2-4}
+%models
+&\multirow{5}{*}{Models} & Asset.cs & Alex Zalanyi\\
+\cline{3-4}
+& & OptimizedResult.cs & Zoltan Suveges\\
+\cline{3-4}
+& & Result.cs & Alex Zalanyi\\
+\cline{3-4}
+& & ResultByHour.cs & Zoltan Suveges\\
+\cline{3-4}
+& & Source.cs & Alex Zalanyi\\
+\cline{2-4}
+%interfaces
+&\multirow{2}{*}{Interfaces} & IController.cs & Filip Tichy\\
+\cline{3-4}
+& & IService.cs & Adela Pastekova\\
+\cline{2-4}
+%services
+&\multirow{6}{*}{Services} & AssetService.cs & Marija Savkina\\
+\cline{3-4}
+& & OptimizedResultsService.cs & Zoltan Suveges\\
+\cline{3-4}
+& & OptimizerService.cs & Alex Zalanyi\\
+\cline{3-4}
+& & ResultByHourService.cs & Filip Tichy\\
+\cline{3-4}
+& & ResultService.cs & Melana Ohrimeca\\
+\cline{3-4}
+& & SourceService.cs & Adela Pastekova\\
+\cline{2-4}
+\hline %horizontal line across all table
+
+%FRONTEND
+\multirow{28}{*}{Frontend}
+%Data
+&\multirow{8}{*}{} & CsvHandler.cs & Adela Pastekova \& Melana Ohrimeca\\
+\cline{3-4}
+& & AssetClient.cs & Zoltan Suveges\\
+\cline{3-4}
+& & IClient.cs & Zoltan Suveges\\
+\cline{3-4}
+& & OptimizedResultsClient.cs & Zoltan Suveges\\
+\cline{3-4}
+& & OptimizerClient.cs & Zoltan Suveges\\
+\cline{3-4}
+& & ResultClient.cs & Zoltan Suveges\\
+\cline{3-4}
+& & ResultListClient.cs & Zoltan Suveges\\
+\cline{3-4}
+& & SourceClient.cs & Zoltan Suveges\\
+\cline{2-4}
+%models
+&\multirow{7}{*}{Models} & Asset.cs & Zoltan Suveges\\
+\cline{3-4}
+& & GeneratorLegendItem.cs & Marija Savkina\\
+\cline{3-4}
+& & OptimizedResults.cs & Zoltan Suveges\\
+\cline{3-4}
+& & Result.cs & Zoltan Suveges\\
+\cline{3-4}
+& & ResultList.cs & Zoltan Suveges\\
+\cline{3-4}
+& & ResultTableRow.cs & Zoltan Suveges\\
+\cline{3-4}
+& & Source.cs & Zoltan Suveges\\
+\cline{2-4}
+%viewmodels
+&\multirow{7}{*}{ViewModels} & AddAssetDialogViewModel.cs & Marija Savkina\\
+\cline{3-4}
+& & AssetsTabViewModel.cs & Marija Savkina\\
+\cline{3-4}
+& & MainWindowViewModel.cs & Everyone\\
+\cline{3-4}
+& & ManagerButtonViewModel.cs & Marija Savkina\\
+\cline{3-4}
+& & ResultsTabViewModel.cs & Adela Pastekova \& Marija Savkina \& Alex Zalanyi\\
+\cline{3-4}
+& & SourceTabViewModel.cs & Zoltan Suveges \& Melana Ohrimeca \& Adela Pastekova\\
+\cline{3-4}
+& & ViewModelBase.cs & Zoltan Suveges\\
+\cline{2-4}
+%views
+&\multirow{6}{*}{Views} & AddAssetDialog.axaml & Marija Savkina \& Adela Pastekova\\
+\cline{3-4}
+& & AssetsTabView.axaml & Marija Savkina \& Adela Pastekova\\
+\cline{3-4}
+& & MainWindow.axaml & Everyone\\
+\cline{3-4}
+& & ManagerButtonView.axaml & Marija Savkina \& Adela Pastekova\\
+\cline{3-4}
+& & ResultsTabView.axaml & Marija Savkina \& Alex Zalanyi \& Adela Pastekova\\
+\cline{3-4}
+& & SourceTabView.axaml & Zoltan Suveges \& Filip Tichy \& Melana Ohrimeca\\
+
+\hline %horizontal line across all table
+\caption{Project Class Contribution}
+\end{longtable}
