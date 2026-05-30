@@ -5,6 +5,7 @@
 
 \hspace*{1cm}The objective of the HeatItOn project is to develop an automated system that can generate cost-efficient heat production schedules for the district heating network in Heatington. The system aims to replace the current manual planning process by providing optimized production strategies that meet heat demand, reduce operational costs, and improve the economic use of electricity. To achieve this, the system must support several key requirements: it must allow users to input relevant source data, manage and select production assets, execute an optimization algorithm that produces feasible and cost-effective schedules, process the resulting output data, and present the results through clear graphical and structured visualizations. The project was developed using a modular software engineering approach, combining a .NET C\# backend, a MySQL database for data storage, and an Avalonia‑based frontend. Communication between components was handled through API clients, and the development process included requirement analysis, system design, iterative implementation, integration, and testing to ensure that each module functioned reliably within the overall system.
 
+\section{Problem Statement}
 \hspace*{1cm}This project addressed the challenge of developing an automated heat production optimization system for HeatItOn, a centralised 
 heating utility in the city of Heatington responsible for supplying heat 
 to approximately 1600 buildings. The desired outcome was a working 
@@ -27,8 +28,9 @@ carried out manually. Operators had to select which production
 units to run in each hour based on experience and rough cost estimates. 
 This made it particularly difficult to react to changing conditions 
 such as fluctuating electricity prices or varying heat demand 
-throughout the day. As a result, the process was time-consuming and likely to produce 
-inefficient decisions.
+throughout the day. As a result, the process was time-consuming and prone to 
+producing inefficient decisions. By automating this process, the aim was to make heat production planning 
+more reliable and cost-efficient.
 
 
 
