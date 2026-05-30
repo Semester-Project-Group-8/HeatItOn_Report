@@ -1,9 +1,35 @@
 \section{Conclusion}
-\hspace*{1cm} HeatItOn is a utility in the city of Heatington that supplies heat to approximately 1,600 buildings through a centralized district heating network. Prior to this project, heat production was planned manually, making it difficult to consistently select the most efficient combination of production units. The goal was to replace this manual process with an automated optimization system capable of generating heat production schedules that consistently meets heat demand while minimizing operational costs.
+\hspace*{1cm} HeatItOn is a utility in the city of Heatington that supplies heat to 
+approximately 1,600 buildings through a centralized district heating network. Prior to 
+this project, heat production was planned manually, making it difficult to consistently 
+select the most efficient combination of production units. The goal was to replace this 
+manual process with an automated optimization system capable of generating heat 
+production schedules that consistently meet heat demand while minimizing operational 
+costs.
 
-\hspace*{1cm} The system was built around five core modules: the Optimizer, Data Visualization, Asset Manager, Source Data Manager, and Result Data Manager. The architecture followed a clear 
-separation between the Frontend, Backend, and Database layers.
+\hspace*{1cm} The system was built around five core modules: the Optimizer, Data 
+Visualization, Asset Manager, Source Data Manager, and Result Data Manager. The 
+architecture followed a clear separation between the Frontend, Backend, and Database 
+layers.
 
-\hspace*{1cm} Both required scenarios were successfully implemented. Scenario 1 covered a heat-only network, where the system prioritized cheaper units and handled maintenance scheduling. Scenario 2 introduced electricity production, where the optimizer calculated net production costs on an hourly basis to determine when to sell or consume electricity. A custom scenario was also implemented, giving users control over which assets are included in the optimization.
+\hspace*{1cm} Both required scenarios were successfully implemented. Scenario 1 covered 
+a heat-only network, where the system prioritized cheaper units and handled maintenance 
+scheduling. Scenario 2 introduced electricity production, where the optimizer calculated 
+net production costs on an hourly basis to determine when to sell or consume electricity. 
+A custom scenario was also implemented, giving users control over which assets are 
+included in the optimization.
 
-\hspace*{1cm} The final product successfully addressed the original problem statement, delivering an automated optimization system that replaces manual planning.
+\hspace*{1cm} The final product successfully addressed the original problem statement. 
+The system is able to automatically generate optimized heat production schedules that 
+meet the heat demand of Heatington while minimizing operational costs, replacing the 
+previous manual planning process entirely. Operators can now manage assets, import 
+source data, run the optimizer, and view the results through a single integrated 
+application.
+
+\hspace*{1cm} Looking ahead, the system could be further extended in several ways. 
+Integrating live electricity prices from Energinet.dk would allow the optimizer to react 
+to real-time market data. The ability to enable or disable individual units directly from 
+the user interface would give operators greater flexibility during optimization. In future 
+development, the team would also focus on improving test coverage, refining the user 
+interface based on user feedback, and expanding the system to support additional heating 
+scenarios.
