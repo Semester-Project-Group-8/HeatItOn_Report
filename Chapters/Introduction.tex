@@ -13,9 +13,9 @@ application capable of automatically generating cost-efficient heat
 production schedules, ensuring that the heat demand of the network was 
 met at all times while keeping operational costs as low as possible \cite{projectdata}.
 
-The system had to account for different types of production units. Some units simply burn fuel to produce heat, meaning their production costs are fixed and predictable. However, other units are also connected to the electricity grid. A gas motor produces electricity as a byproduct which can be sold back to the grid, while an electric boiler consumes electricity which must be purchased. Since electricity prices change every hour, the effective cost of running these units varies constantly, requiring the optimizer to recalculate and compare the costs of all units on an hourly basis in order to always produce the most economical schedule.  
+\hspace*{1cm}The system had to account for different types of production units. Some units simply burn fuel to produce heat, meaning their production costs are fixed and predictable. However, other units are also connected to the electricity grid. A gas motor produces electricity as a byproduct which can be sold back to the grid, while an electric boiler consumes electricity which must be purchased. Since electricity prices change every hour, the effective cost of running these units varies constantly, requiring the optimizer to recalculate and compare the costs of all units on an hourly basis in order to always produce the most economical schedule.  
 
-This required implementing two distinct optimization 
+\hspace*{1cm}This required implementing two distinct optimization 
 scenarios. The first was a heat-only scenario using three gas boilers 
 and one oil boiler. The second was a combined heat and electricity 
 scenario using two gas boilers, one gas motor, and one electric boiler. 
@@ -23,7 +23,7 @@ Both scenarios also required support for mandatory maintenance periods
 of 30 to 60 hours for designated units, during which the affected unit 
 could not participate in the optimization. 
 
-Prior to this project, all heat production planning at HeatItOn was 
+\hspace*{1cm}Prior to this project, all heat production planning at HeatItOn was 
 carried out manually. Operators had to select which production 
 units to run in each hour based on experience and rough cost estimates. 
 This made it particularly difficult to react to changing conditions 
@@ -81,11 +81,11 @@ The optimization strategy prioritizes the cheapest gas boiler first, adding outp
 
 \subsubsection*{Scenario 1 (Heat only)}
 
-Scenario 1 uses a single district heating network with three gas boilers (GB1, GB2, GB3) and one oil boiler (OB1). The gas boilers are cheaper, while the oil boiler has higher production costs and is mainly used in peak demand periods. All boilers have constant production costs that do not depend on the hour of operation. Strategy for scenario one is to run the cheapest gas boiler first and then add production from the more expensive boilers if needed to meet the heat demand. There should also be chosen a period of 30 to 60 hours when one of the gas boilers will be down due to maintenance.
+\hspace*{1cm}Scenario 1 uses a single district heating network with three gas boilers (GB1, GB2, GB3) and one oil boiler (OB1). The gas boilers are cheaper, while the oil boiler has higher production costs and is mainly used in peak demand periods. All boilers have constant production costs that do not depend on the hour of operation. Strategy for scenario one is to run the cheapest gas boiler first and then add production from the more expensive boilers if needed to meet the heat demand. There should also be chosen a period of 30 to 60 hours when one of the gas boilers will be down due to maintenance.
 
 \subsubsection*{Scenario 2 (Heat and electricity)}
 
-Scenario 2 operates on a network with two gas boilers (GB1, GB3), one gas motor (GM1), and one electric boiler (EB1). The gas motor produces electricity that can be sold on the market, while the electric boiler consumes electricity that must be purchased.
+\hspace*{1cm}Scenario 2 operates on a network with two gas boilers (GB1, GB3), one gas motor (GM1), and one electric boiler (EB1). The gas motor produces electricity that can be sold on the market, while the electric boiler consumes electricity that must be purchased.
 When electricity prices are high, the gas motor is prioritized, as selling electricity generates additional income. When prices are low, the electric boiler becomes the preferred unit, as buying electricity is cheaper. Unit selection is determined each hour by calculating and comparing the net production cost for each unit.
 
 
@@ -100,11 +100,11 @@ The project is based on data delivered by Danfoss, including:
 
 \medskip
 
-If there is time left,  project can be extended by usage of other visualization libraries, storing data in a database, enabling or disabling units directly from the UI, running alternative configurations in Scenario 2, and implementing APIs and an API client for reading electricity prices from Energinet.dk.
+\hspace*{1cm}If there is time left,  project can be extended by usage of other visualization libraries, storing data in a database, enabling or disabling units directly from the UI, running alternative configurations in Scenario 2, and implementing APIs and an API client for reading electricity prices from Energinet.dk.
 
 \section{Functional Requirements}
 
-The following tables outline the formal functional requirements for the system, translated into standardized system-level behaviors. The requirements are divided into three tables: one for each of the two operational scenarios, and a third covering general app navigation and UI requirements.
+\hspace*{1cm}The following tables outline the formal functional requirements for the system, translated into standardized system-level behaviors. The requirements are divided into three tables: one for each of the two operational scenarios, and a third covering general app navigation and UI requirements.
 
 \vspace{0.5cm}
 
@@ -248,7 +248,7 @@ FR-034 & HEAT - 147/188 & The system shall provide results of different configur
 \newpage
 \section{Non-Functional Requirements}
 
-The following table details the non-functional requirements (NFRs), which define the system's quality attributes, performance standards, and operational constraints.
+\hspace*{1cm}The following table details the non-functional requirements (NFRs), which define the system's quality attributes, performance standards, and operational constraints.
 
 \vspace{0.5cm}
 
@@ -293,7 +293,7 @@ NFR-009 & The system shall handle API failures by displaying a clear, understand
 \end{longtable}
 
 \section{System Requirements}
-The system is split into three parts: Front End, Back End and the Database. Both the Backend and the Database are run in a Linux Docker container. The Frontend is run locally on the user's machine. For a machine to run the project they need the following:
+\hspace*{1cm}The system is split into three parts: Front End, Back End and the Database. Both the Backend and the Database are run in a Linux Docker container. The Frontend is run locally on the user's machine. For a machine to run the project they need the following:
 
 \subsection*{Software Specifications}
 \begin{description}
