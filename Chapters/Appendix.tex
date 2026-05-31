@@ -11,309 +11,311 @@
 \end{figure}
 \vspace*{\fill}
 
-\newpage
+\clearpage
 \chapter{Task and Review Assignments}
+\fancyhead[L]{Appendix B. Task and Review Assignments} % Hardcodes the left header
+\mbox{} % Keeps longtable from confusing the page builder
 
 \setlength{\LTleft}{\fill}
 \setlength{\LTright}{\fill}
+\renewcommand{\arraystretch}{1.3} % Gives rows breathing room
 
-\begin{longtable}{|p{1.2cm}|p{4.5cm}|p{2.8cm}|p{2.6cm}|p{2.6cm}|}
+\begin{longtable}{p{1.5cm} p{4.5cm} p{2.8cm} p{2.6cm} p{2.6cm}}
 \caption{Code Review Assignments per Task} \\
-\hline
+\toprule
 \textbf{Issue Key} & \textbf{Summary} & \textbf{Assignee} & \textbf{Review 1} & \textbf{Review 2} \\
-\hline
+\midrule
 \endfirsthead
 
 \caption[]{Code Review Assignments per Task (continued)} \\
-\hline
+\toprule
 \textbf{Issue Key} & \textbf{Summary} & \textbf{Assignee} & \textbf{Review 1} & \textbf{Review 2} \\
-\hline
+\midrule
 \endhead
 
-\hline
+\midrule
+\multicolumn{5}{r}{\textit{Continued on next page}} \\
 \endfoot
 
-\hline
+\bottomrule
 \endlastfoot
 
-HEAT-17 & Problem statement & Adela Pastekova & Zoltan Suveges & Alex Zalanyi \\ \hline
-HEAT-18 & Problem analysis & Adela Pastekova & Filip Tichy & Melana Ohrimeca \\ \hline
-HEAT-19 & Make CRC cards & Filip Tichy & Zoltan Suveges & Marija Savkina \\ \hline
-HEAT-20 & Verb-Noun Analysis & Marija Savkina & Melana Ohrimeca & Alex Zalanyi \\ \hline
-HEAT-21 & Backend UML Diagram & Zoltan Suveges & Adela Pastekova & Filip Tichy \\ \hline
-HEAT-22 & Functional Requirements & Melana Ohrimeca & Marija Savkina & Adela Pastekova \\ \hline
-HEAT-23 & Write Non-Functional requirements & Melana Ohrimeca & Filip Tichy & Zoltan Suveges \\ \hline
-HEAT-24 & Write System requirements & Alex Zalanyi & Adela Pastekova & Melana Ohrimeca \\ \hline
-HEAT-25 & Write User Requirements & Alex Zalanyi & Marija Savkina & Zoltan Suveges \\ \hline
-HEAT-26 & Set up project & Zoltan Suveges & Everyone & --- \\ \hline
-HEAT-27 & Create avalonia project & Zoltan Suveges & Everyone & --- \\ \hline
-HEAT-28 & Create backend project & Zoltan Suveges & Everyone & --- \\ \hline
-HEAT-29 & Write Dockerfile & Zoltan Suveges & Everyone & --- \\ \hline
-HEAT-30 & Write docker-compose & Alex Zalanyi & Zoltan Suveges & --- \\ \hline
-HEAT-40 & Dockerize backend and connect to dockerized database & Alex Zalanyi & Zoltan Suveges & --- \\ \hline
-HEAT-42 & Connecting to database & Alex Zalanyi & Zoltan Suveges & --- \\ \hline
-HEAT-43 & Create source data model & Alex Zalanyi & Zoltan Suveges & --- \\ \hline
-HEAT-77 & Create asset data model & Alex Zalanyi & Zoltan Suveges & --- \\ \hline
-HEAT-78 & The user should be able to list and sort source data & Zoltan Suveges & Filip Tichy & Marija Savkina \\ \hline
-HEAT-81 & Make UI Design & Everyone & --- & --- \\ \hline
-HEAT-83 & Frontend UML Diagram & Marija Savkina, Melana Ohrimeca & Zoltan Suveges & Alex Zalanyi \\ \hline
-HEAT-91 & The assets should be stored in the database & Marija Savkina & Melana Ohrimeca & Zoltan Suveges \\ \hline
-HEAT-92 & The source data should be stored in the database & Adela Pastekova & Zoltan Suveges & Filip Tichy \\ \hline
-HEAT-93 & Create result data model & Alex Zalanyi & Zoltan Suveges & --- \\ \hline
-HEAT-94 & Read and write source (save/upload to/from a csv) & Adela Pastekova & Marija Savkina & Zoltan Suveges \\ \hline
-HEAT-95 & Read and write asset (save/upload to/from a csv) & Melana Ohrimeca & Alex Zalanyi & Filip Tichy \\ \hline
-HEAT-98 & Make UI for managing assets (add, edit and delete) & Marija Savkina & Melana Ohrimeca & Zoltan Suveges \\ \hline
-HEAT-101 & Make UI to set up and start scenarios & Marija Savkina & Zoltan Suveges & Adela Pastekova \\ \hline
-HEAT-103 & Make UI to list previous results & Filip Tichy & Alex Zalanyi & Zoltan Suveges \\ \hline
-HEAT-104 & Make UI to show selected result & Filip Tichy & Melana Ohrimeca & Adela Pastekova \\ \hline
-HEAT-119 & Implement CRUD operations for source data & Adela Pastekova & Filip Tichy & Zoltan Suveges \\ \hline
-HEAT-122 & Create template for source item & Zoltan Suveges & Filip Tichy & Marija Savkina \\ \hline
-HEAT-123 & Create UI to list source data & Zoltan Suveges & Melana Ohrimeca & Adela Pastekova \\ \hline
-HEAT-124 & Rename demand to source & Alex Zalanyi & --- & --- \\ \hline
-HEAT-129 & Assets view design & Everyone & --- & --- \\ \hline
-HEAT-130 & Source data view design & Everyone & --- & --- \\ \hline
-HEAT-131 & Optimize view design & Everyone & --- & --- \\ \hline
-HEAT-132 & Upload view & Everyone & --- & --- \\ \hline
-HEAT-133 & Result data view design & Everyone & --- & --- \\ \hline
-HEAT-147 & Create result end points & Melana Ohrimeca & Adela Pastekova & Alex Zalanyi \\ \hline
-HEAT-148 & Create resultList end points & Filip Tichy & Zoltan Suveges & Alex Zalanyi \\ \hline
-HEAT-149 & Create UI architecture and tabs with empty pages & Adela Pastekova & Melana Ohrimeca & Filip Tichy \\ \hline
-HEAT-150 & Create API connector to UI & Zoltan Suveges & Alex Zalanyi & Melana Ohrimeca \\ \hline
-HEAT-151 & Unit test for asset manager & Marija Savkina & Zoltan Suveges & Adela Pastekova \\ \hline
-HEAT-152 & Unit test for source manager & Adela Pastekova & Marija Savkina & Zoltan Suveges \\ \hline
-HEAT-153 & Create controller (optimizer end points) & Alex Zalanyi & Zoltan Suveges & Filip Tichy \\ \hline
-HEAT-154 & Create service (optimizer end points) & Alex Zalanyi & Melana Ohrimeca & Marija Savkina \\ \hline
-HEAT-155 & Unit test (optimizer end points) & Alex Zalanyi & Adela Pastekova & Marija Savkina \\ \hline
-HEAT-156 & Create algorithm for optimization & Alex Zalanyi, Filip Tichy & Alex Zalanyi & --- \\ \hline
-HEAT-157 & The user should be able to see images for each generator & Zoltan Suveges & Adela Pastekova & Alex Zalanyi \\ \hline
-HEAT-167 & Make template layout for asset card & Marija Savkina & Adela Pastekova & Filip Tichy \\ \hline
-HEAT-168 & Get data from backend (assets) & Marija Savkina & Zoltan Suveges & Filip Tichy \\ \hline
-HEAT-169 & Write result (save/upload to/from a csv) & Melana Ohrimeca & Alex Zalanyi & Zoltan Suveges \\ \hline
-HEAT-170 & Make charts for result data & Zoltan Suveges & Adela Pastekova & Alex Zalanyi \\ \hline
-HEAT-171 & Have chart filter options & Filip Tichy & Melana Ohrimeca & Alex Zalanyi \\ \hline
-HEAT-172 & Connect to backend & Filip Tichy & Alex Zalanyi & Marija Savkina \\ \hline
-HEAT-176 & Create asset csv & Alex Zalanyi & --- & --- \\ \hline
-HEAT-178 & Chart on source view only refreshes when resizing & Zoltan Suveges & --- & --- \\ \hline
-HEAT-183 & Redo Asset Manager buttons & Marija Savkina & Adela Pastekova & Zoltan Suveges \\ \hline
-HEAT-188 & Rework result data & Zoltan Suveges & Adela Pastekova & Alex Zalanyi \\ \hline
-HEAT-198 & Interface for controllers & Filip Tichy & Marija Savkina & Zoltan Suveges \\ \hline
-HEAT-199 & Interface for services & Adela Pastekova & Filip Tichy & Melana Ohrimeca \\ \hline
-HEAT-200 & Interface for HttpClients & Melana Ohrimeca & Adela Pastekova & Zoltan Suveges \\ \hline
-HEAT-201 & Combine CSV handlers into one class & Zoltan Suveges & Filip Tichy & Melana Ohrimeca \\ \hline
-HEAT-203 & Rework charts and diagrams & Marija Savkina & Filip Tichy & Adela Pastekova \\ \hline
-HEAT-207 & Nicer UI & Adela Pastekova & Melana Ohrimeca & Zoltan Suveges \\ \hline
-HEAT-208 & Auto refresh & Filip Tichy & Adela Pastekova & Marija Savkina \\ \hline
-HEAT-209 & Centralized backend error handling with custom errors & Zoltan Suveges & Filip Tichy & Adela Pastekova \\ \hline
-HEAT-233 & Edit and delete source data from the source tab & Filip Tichy & Marija Savkina & Alex Zalanyi \\ \hline
-HEAT-237 & Delete saved optimization results & Adela Pastekova & Filip Tichy & Melana Ohrimeca \\ \hline
-HEAT-242 & Electricity price API feasibility (Energinet.dk) & Alex Zalanyi & Filip Tichy & Zoltan Suveges \\ \hline
-HEAT-278 & Update sources not reupload them & Zoltan Suveges & Filip Tichy & Adela Pastekova \\ \hline
-HEAT-279 & Graph on source view not showing & Adela Pastekova & Zoltan Suveges & Marija Savkina \\ \hline
+HEAT-17 & Problem statement & Adela Pastekova & Zoltan Suveges & Alex Zalanyi \\ 
+HEAT-18 & Problem analysis & Adela Pastekova & Filip Tichy & Melana Ohrimeca \\ 
+HEAT-19 & Make CRC cards & Filip Tichy & Zoltan Suveges & Marija Savkina \\ 
+HEAT-20 & Verb-Noun Analysis & Marija Savkina & Melana Ohrimeca & Alex Zalanyi \\ 
+HEAT-21 & Backend UML Diagram & Zoltan Suveges & Adela Pastekova & Filip Tichy \\ 
+HEAT-22 & Functional Requirements & Melana Ohrimeca & Marija Savkina & Adela Pastekova \\ 
+HEAT-23 & Write Non-Functional requirements & Melana Ohrimeca & Filip Tichy & Zoltan Suveges \\ 
+HEAT-24 & Write System requirements & Alex Zalanyi & Adela Pastekova & Melana Ohrimeca \\ 
+HEAT-25 & Write User Requirements & Alex Zalanyi & Marija Savkina & Zoltan Suveges \\ 
+HEAT-26 & Set up project & Zoltan Suveges & Everyone & --- \\ 
+HEAT-27 & Create avalonia project & Zoltan Suveges & Everyone & --- \\ 
+HEAT-28 & Create backend project & Zoltan Suveges & Everyone & --- \\ 
+HEAT-29 & Write Dockerfile & Zoltan Suveges & Everyone & --- \\ 
+HEAT-30 & Write docker-compose & Alex Zalanyi & Zoltan Suveges & --- \\ 
+HEAT-40 & Dockerize backend and connect to dockerized database & Alex Zalanyi & Zoltan Suveges & --- \\ 
+HEAT-42 & Connecting to database & Alex Zalanyi & Zoltan Suveges & --- \\ 
+HEAT-43 & Create source data model & Alex Zalanyi & Zoltan Suveges & --- \\ 
+HEAT-77 & Create asset data model & Alex Zalanyi & Zoltan Suveges & --- \\ 
+HEAT-78 & The user should be able to list and sort source data & Zoltan Suveges & Filip Tichy & Marija Savkina \\ 
+HEAT-81 & Make UI Design & Everyone & --- & --- \\ 
+HEAT-83 & Frontend UML Diagram & Marija Savkina, Melana Ohrimeca & Zoltan Suveges & Alex Zalanyi \\ 
+HEAT-91 & The assets should be stored in the database & Marija Savkina & Melana Ohrimeca & Zoltan Suveges \\ 
+HEAT-92 & The source data should be stored in the database & Adela Pastekova & Zoltan Suveges & Filip Tichy \\ 
+HEAT-93 & Create result data model & Alex Zalanyi & Zoltan Suveges & --- \\ 
+HEAT-94 & Read and write source (save/upload to/from a csv) & Adela Pastekova & Marija Savkina & Zoltan Suveges \\ 
+HEAT-95 & Read and write asset (save/upload to/from a csv) & Melana Ohrimeca & Alex Zalanyi & Filip Tichy \\ 
+HEAT-98 & Make UI for managing assets (add, edit and delete) & Marija Savkina & Melana Ohrimeca & Zoltan Suveges \\ 
+HEAT-101 & Make UI to set up and start scenarios & Marija Savkina & Zoltan Suveges & Adela Pastekova \\ 
+HEAT-103 & Make UI to list previous results & Filip Tichy & Alex Zalanyi & Zoltan Suveges \\ 
+HEAT-104 & Make UI to show selected result & Filip Tichy & Melana Ohrimeca & Adela Pastekova \\ 
+HEAT-119 & Implement CRUD operations for source data & Adela Pastekova & Filip Tichy & Zoltan Suveges \\ 
+HEAT-122 & Create template for source item & Zoltan Suveges & Filip Tichy & Marija Savkina \\ 
+HEAT-123 & Create UI to list source data & Zoltan Suveges & Melana Ohrimeca & Adela Pastekova \\ 
+HEAT-124 & Rename demand to source & Alex Zalanyi & --- & --- \\ 
+HEAT-129 & Assets view design & Everyone & --- & --- \\ 
+HEAT-130 & Source data view design & Everyone & --- & --- \\ 
+HEAT-131 & Optimize view design & Everyone & --- & --- \\ 
+HEAT-132 & Upload view & Everyone & --- & --- \\ 
+HEAT-133 & Result data view design & Everyone & --- & --- \\ 
+HEAT-147 & Create result end points & Melana Ohrimeca & Adela Pastekova & Alex Zalanyi \\ 
+HEAT-148 & Create resultList end points & Filip Tichy & Zoltan Suveges & Alex Zalanyi \\ 
+HEAT-149 & Create UI architecture and tabs with empty pages & Adela Pastekova & Melana Ohrimeca & Filip Tichy \\ 
+HEAT-150 & Create API connector to UI & Zoltan Suveges & Alex Zalanyi & Melana Ohrimeca \\ 
+HEAT-151 & Unit test for asset manager & Marija Savkina & Zoltan Suveges & Adela Pastekova \\ 
+HEAT-152 & Unit test for source manager & Adela Pastekova & Marija Savkina & Zoltan Suveges \\ 
+HEAT-153 & Create controller (optimizer end points) & Alex Zalanyi & Zoltan Suveges & Filip Tichy \\ 
+HEAT-154 & Create service (optimizer end points) & Alex Zalanyi & Melana Ohrimeca & Marija Savkina \\ 
+HEAT-155 & Unit test (optimizer end points) & Alex Zalanyi & Adela Pastekova & Marija Savkina \\ 
+HEAT-156 & Create algorithm for optimization & Alex Zalanyi, Filip Tichy & Alex Zalanyi & --- \\ 
+HEAT-157 & The user should be able to see images for each generator & Zoltan Suveges & Adela Pastekova & Alex Zalanyi \\ 
+HEAT-167 & Make template layout for asset card & Marija Savkina & Adela Pastekova & Filip Tichy \\ 
+HEAT-168 & Get data from backend (assets) & Marija Savkina & Zoltan Suveges & Filip Tichy \\ 
+HEAT-169 & Write result (save/upload to/from a csv) & Melana Ohrimeca & Alex Zalanyi & Zoltan Suveges \\ 
+HEAT-170 & Make charts for result data & Zoltan Suveges & Adela Pastekova & Alex Zalanyi \\ 
+HEAT-171 & Have chart filter options & Filip Tichy & Melana Ohrimeca & Alex Zalanyi \\ 
+HEAT-172 & Connect to backend & Filip Tichy & Alex Zalanyi & Marija Savkina \\ 
+HEAT-176 & Create asset csv & Alex Zalanyi & --- & --- \\ 
+HEAT-178 & Chart on source view only refreshes when resizing & Zoltan Suveges & --- & --- \\ 
+HEAT-183 & Redo Asset Manager buttons & Marija Savkina & Adela Pastekova & Zoltan Suveges \\ 
+HEAT-188 & Rework result data & Zoltan Suveges & Adela Pastekova & Alex Zalanyi \\ 
+HEAT-198 & Interface for controllers & Filip Tichy & Marija Savkina & Zoltan Suveges \\ 
+HEAT-199 & Interface for services & Adela Pastekova & Filip Tichy & Melana Ohrimeca \\ 
+HEAT-200 & Interface for HttpClients & Melana Ohrimeca & Adela Pastekova & Zoltan Suveges \\ 
+HEAT-201 & Combine CSV handlers into one class & Zoltan Suveges & Filip Tichy & Melana Ohrimeca \\ 
+HEAT-203 & Rework charts and diagrams & Marija Savkina & Filip Tichy & Adela Pastekova \\ 
+HEAT-207 & Nicer UI & Adela Pastekova & Melana Ohrimeca & Zoltan Suveges \\ 
+HEAT-208 & Auto refresh & Filip Tichy & Adela Pastekova & Marija Savkina \\ 
+HEAT-209 & Centralized backend error handling with custom errors & Zoltan Suveges & Filip Tichy & Adela Pastekova \\ 
+HEAT-233 & Edit and delete source data from the source tab & Filip Tichy & Marija Savkina & Alex Zalanyi \\ 
+HEAT-237 & Delete saved optimization results & Adela Pastekova & Filip Tichy & Melana Ohrimeca \\ 
+HEAT-242 & Electricity price API feasibility (Energinet.dk) & Alex Zalanyi & Filip Tichy & Zoltan Suveges \\ 
+HEAT-278 & Update sources not reupload them & Zoltan Suveges & Filip Tichy & Adela Pastekova \\ 
+HEAT-279 & Graph on source view not showing & Adela Pastekova & Zoltan Suveges & Marija Savkina \\ 
 \end{longtable}
 
 
-\newpage
+\clearpage
 \chapter{Report Table of Contribution}
+\fancyhead[L]{Appendix C. {Report Table of Contribution}} % Hardcodes the left header
+\mbox{} % Keeps longtable from confusing the page builder
 
 \setlength{\LTleft}{\fill}
 \setlength{\LTright}{\fill}
+\renewcommand{\arraystretch}{1.3}
 
-\begin{longtable}{|p{5.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+\begin{longtable}{p{5.7cm} p{2.5cm} p{2.5cm} p{2.5cm}}
 \caption{Report Writing Contributions} \\
-\hline
+\toprule
 \textbf{Chapter} & \textbf{Author} & \textbf{First Review} & \textbf{Second Review} \\
-\hline
+\midrule
 \endfirsthead
 
 \caption[]{Report Writing Contributions (continued)} \\
-\hline
+\toprule
 \textbf{Chapter} & \textbf{Author} & \textbf{First Review} & \textbf{Second Review} \\
-\hline
+\midrule
 \endhead
 
-\hline
+\midrule
+\multicolumn{4}{r}{\textit{Continued on next page}} \\
 \endfoot
 
-\hline
+\bottomrule
 \endlastfoot
 
-AI Usage & Melana Ohrimeca & Alex Zalanyi & Marija Savkina \\ \hline
-Abstract & Marija Savkina & Zoltan Suveges & Adela Pastekova \\ \hline
-Appendix & Adela Pastekova & Marija Savkina & Filip Tichy \\ \hline
-Conclusion & Adela Pastekova & Alex Zalanyi & Melana Ohrimeca \\ \hline
-Discussion and Reflection & Adela Pastekova & Marija Savkina & Melana Ohrimeca \\ \hline
-Frontend Implementation, Midterm Version (5.1.1) (Implementation and Technical Realization) & Alex Zalanyi & Melana Ohrimeca & Adela Pastekova \\ \hline
-Final Version, Midterm Version (5.2.1), Midterm Version (5.3.1) (Implementation and Technical Realization) & Zoltan Suveges & Alex Zalanyi & Adela Pastekova \\ \hline
-Final Version (5.2.2) Final Version (5.3.2) (Implementation and Technical Realization) & Marija Savkina & Zoltan Suveges & Melana Ohrimeca \\ \hline
-Project Objectives and Requirements (Introduction) & Marija Savkina & & \\ \hline
-Problem Statement (Introduction) & Adela Pastekova & Zoltan Suveges & Alex Zalanyi \\ \hline
-Problem Analysis (Introduction) & Adela Pastekova & Filip Tichy & Melana Ohrimeca \\ \hline
-Functional Requirements (Introduction) & Melana Ohrimeca & Marija Savkina & Adela Pastekova \\ \hline
-Non-Functional Requirements (Introduction) & Melana Ohrimeca & Filip Tichy & Zoltan Suveges \\ \hline
-System Requirements (Introduction) & Alex Zalanyi & Adela Pastekova & Melana Ohrimeca \\ \hline
-Target User Persona Requirements (Appendix) & Alex Zalanyi & Marija Savkina & Zoltan Suveges \\ \hline
-References & Melana Ohrimeca & Marija Savkina & Alex Zalanyi \\ \hline
-Scrum Implementation & Filip Tichy & Melana Ohrimeca & Adela Pastekova \\ \hline
-Verb-noun analysis (Solution (Technical Aspect)) & Marija Savkina & Melana Ohrimeca & Alex Zalanyi \\ \hline
-CRC Cards (Solution (Technical Aspect)) & Filip Tichy & Zoltan Suveges & Marija Savkina \\ \hline
-System Design -- Class UML Diagram (Solution (Technical Aspect)) & Melana Ohrimeca & Alex Zalanyi & Marija Savkina \\ \hline
-System Design -- Class Sequence Diagram (Solution (Technical Aspect)) & Marija Savkina & Alex Zalanyi & Melana Ohrimeca \\ \hline
-System Technical Architecture, Package Diagram, Activity Diagrams (Solution (Technical Aspect)) & Alex Zalanyi & Adela Pastekova & Melana Ohrimeca \\ \hline
-Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
+AI Usage & Melana Ohrimeca & Alex Zalanyi & Marija Savkina \\ 
+Abstract & Marija Savkina & Zoltan Suveges & Adela Pastekova \\ 
+Appendix & Adela Pastekova & Marija Savkina & Filip Tichy \\ 
+Conclusion & Adela Pastekova & Alex Zalanyi & Melana Ohrimeca \\ 
+Discussion and Reflection & Adela Pastekova & Marija Savkina & Melana Ohrimeca \\ 
+Frontend Implementation, Midterm Version (5.1.1) (Implementation and Technical Realization) & Alex Zalanyi & Melana Ohrimeca & Adela Pastekova \\ 
+Final Version, Midterm Version (5.2.1), Midterm Version (5.3.1) (Implementation and Technical Realization) & Zoltan Suveges & Alex Zalanyi & Adela Pastekova \\ 
+Final Version (5.2.2) Final Version (5.3.2) (Implementation and Technical Realization) & Marija Savkina & Zoltan Suveges & Melana Ohrimeca \\ 
+Project Objectives and Requirements (Introduction) & Marija Savkina & & \\ 
+Problem Statement (Introduction) & Adela Pastekova & Zoltan Suveges & Alex Zalanyi \\ 
+Problem Analysis (Introduction) & Adela Pastekova & Filip Tichy & Melana Ohrimeca \\ 
+Functional Requirements (Introduction) & Melana Ohrimeca & Marija Savkina & Adela Pastekova \\ 
+Non-Functional Requirements (Introduction) & Melana Ohrimeca & Filip Tichy & Zoltan Suveges \\ 
+System Requirements (Introduction) & Alex Zalanyi & Adela Pastekova & Melana Ohrimeca \\ 
+Target User Persona Requirements (Appendix) & Alex Zalanyi & Marija Savkina & Zoltan Suveges \\ 
+References & Melana Ohrimeca & Marija Savkina & Alex Zalanyi \\ 
+Scrum Implementation & Filip Tichy & Melana Ohrimeca & Adela Pastekova \\ 
+Verb-noun analysis (Solution (Technical Aspect)) & Marija Savkina & Melana Ohrimeca & Alex Zalanyi \\ 
+CRC Cards (Solution (Technical Aspect)) & Filip Tichy & Zoltan Suveges & Marija Savkina \\ 
+System Design -- Class UML Diagram (Solution (Technical Aspect)) & Melana Ohrimeca & Alex Zalanyi & Marija Savkina \\ 
+System Design -- Class Sequence Diagram (Solution (Technical Aspect)) & Marija Savkina & Alex Zalanyi & Melana Ohrimeca \\ 
+System Technical Architecture, Package Diagram, Activity Diagrams (Solution (Technical Aspect)) & Alex Zalanyi & Adela Pastekova & Melana Ohrimeca \\ 
+Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ 
 \end{longtable}
 
-\renewcommand{\arraystretch}{1.3}
-\begin{longtable}{|p{1.5cm}|p{2cm}|p{5cm}|p{4cm}|}
 
-\hline
+\clearpage
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{p{1.5cm} p{2cm} p{5.4cm} p{4.5cm}}
+\caption{Project Class Contribution} \\
+\toprule
 %HEADER
 \textbf{Project} & \textbf{Folder} & \textbf{File} & \textbf{Author} \\
-\hline
+\midrule
 \endfirsthead
 
-\hline
+\caption[]{Project Class Contribution (continued)} \\
+\toprule
 \textbf{Project} & \textbf{Folder} & \textbf{File} & \textbf{Author} \\
-\hline
+\midrule
 \endhead
 
-\multicolumn{4}{r}{\textit{Table continued on next page}} \\
+\midrule
+\multicolumn{4}{r}{\textit{Continued on next page}} \\
 \endfoot
 
+\bottomrule
 \endlastfoot
+
 %BACKEND
-\multirow{21}{*}{Backend}
-%data
- & Data & BackendDbContext.cs & Zoltan Suveges\\
-\cline{2-4}%line from 2 to 4
-%controllers
+\multirow{21}{*}{Backend} & Data & BackendDbContext.cs & Zoltan Suveges\\
+\cmidrule{2-4}
 &\multirow{6}{*}{Controllers} & AssetsController.cs & Marija Savkina\\
-\cline{3-4}
+\cmidrule{3-4}
 & & OptimizedResultsController.cs & Zoltan Suveges\\
-\cline{3-4}
+\cmidrule{3-4}
 & & OptimizerController.cs & Alex Zalanyi\\
-\cline{3-4}
+\cmidrule{3-4}
 & & ResultByHourController.cs & Filip Tichy\\
-\cline{3-4}
+\cmidrule{3-4}
 & & ResultController.cs & Melana Ohrimeca\\
-\cline{3-4}
+\cmidrule{3-4}
 & & SourceController.cs & Adela Pastekova\\
-\cline{2-4}
-%hubs
+\cmidrule{2-4}
 & Hubs & BackendHubs.cs & Zoltan Suveges\\
-\cline{2-4}
-%models
+\cmidrule{2-4}
 &\multirow{5}{*}{Models} & Asset.cs & Alex Zalanyi\\
-\cline{3-4}
+\cmidrule{3-4}
 & & OptimizedResult.cs & Zoltan Suveges\\
-\cline{3-4}
+\cmidrule{3-4}
 & & Result.cs & Alex Zalanyi\\
-\cline{3-4}
+\cmidrule{3-4}
 & & ResultByHour.cs & Zoltan Suveges\\
-\cline{3-4}
+\cmidrule{3-4}
 & & Source.cs & Alex Zalanyi\\
-\cline{2-4}
-%interfaces
+\cmidrule{2-4}
 &\multirow{2}{*}{Interfaces} & IController.cs & Filip Tichy\\
-\cline{3-4}
+\cmidrule{3-4}
 & & IService.cs & Adela Pastekova\\
-\cline{2-4}
-%services
+\cmidrule{2-4}
 &\multirow{6}{*}{Services} & AssetService.cs & Marija Savkina\\
-\cline{3-4}
+\cmidrule{3-4}
 & & OptimizedResultsService.cs & Zoltan Suveges\\
-\cline{3-4}
+\cmidrule{3-4}
 & & OptimizerService.cs & Alex Zalanyi\\
-\cline{3-4}
+\cmidrule{3-4}
 & & ResultByHourService.cs & Filip Tichy\\
-\cline{3-4}
+\cmidrule{3-4}
 & & ResultService.cs & Melana Ohrimeca\\
-\cline{3-4}
+\cmidrule{3-4}
 & & SourceService.cs & Adela Pastekova\\
-\cline{2-4}
-\hline %horizontal line across all table
+\midrule 
 
 %FRONTEND
-\multirow{28}{*}{Frontend}
-%Data
-&\multirow{8}{*}{} & CsvHandler.cs & Adela Pastekova \& Melana Ohrimeca\\
-\cline{3-4}
+\multirow{28}{*}{Frontend} &\multirow{8}{*}{Data} & CsvHandler.cs & Adela Pastekova \& Melana Ohrimeca\\
+\cmidrule{3-4}
 & & AssetClient.cs & Zoltan Suveges\\
-\cline{3-4}
+\cmidrule{3-4}
 & & IClient.cs & Zoltan Suveges\\
-\cline{3-4}
+\cmidrule{3-4}
 & & OptimizedResultsClient.cs & Zoltan Suveges\\
-\cline{3-4}
+\cmidrule{3-4}
 & & OptimizerClient.cs & Zoltan Suveges\\
-\cline{3-4}
+\cmidrule{3-4}
 & & ResultClient.cs & Zoltan Suveges\\
-\cline{3-4}
+\cmidrule{3-4}
 & & ResultListClient.cs & Zoltan Suveges\\
-\cline{3-4}
+\cmidrule{3-4}
 & & SourceClient.cs & Zoltan Suveges\\
-\cline{2-4}
-%models
+\cmidrule{2-4}
 &\multirow{7}{*}{Models} & Asset.cs & Zoltan Suveges\\
-\cline{3-4}
+\cmidrule{3-4}
 & & GeneratorLegendItem.cs & Marija Savkina\\
-\cline{3-4}
+\cmidrule{3-4}
 & & OptimizedResults.cs & Zoltan Suveges\\
-\cline{3-4}
+\cmidrule{3-4}
 & & Result.cs & Zoltan Suveges\\
-\cline{3-4}
+\cmidrule{3-4}
 & & ResultList.cs & Zoltan Suveges\\
-\cline{3-4}
+\cmidrule{3-4}
 & & ResultTableRow.cs & Zoltan Suveges\\
-\cline{3-4}
+\cmidrule{3-4}
 & & Source.cs & Zoltan Suveges\\
-\cline{2-4}
-%viewmodels
+\cmidrule{2-4}
 &\multirow{7}{*}{ViewModels} & AddAssetDialogViewModel.cs & Marija Savkina\\
-\cline{3-4}
+\cmidrule{3-4}
 & & AssetsTabViewModel.cs & Marija Savkina\\
-\cline{3-4}
+\cmidrule{3-4}
 & & MainWindowViewModel.cs & Everyone\\
-\cline{3-4}
+\cmidrule{3-4}
 & & ManagerButtonViewModel.cs & Marija Savkina\\
-\cline{3-4}
+\cmidrule{3-4}
 & & ResultsTabViewModel.cs & Adela Pastekova \& Marija Savkina \& Alex Zalanyi\\
-\cline{3-4}
+\cmidrule{3-4}
 & & SourceTabViewModel.cs & Zoltan Suveges \& Melana Ohrimeca \& Adela Pastekova\\
-\cline{3-4}
+\cmidrule{3-4}
 & & ViewModelBase.cs & Zoltan Suveges\\
-\cline{2-4}
-%views
+\cmidrule{2-4}
 &\multirow{6}{*}{Views} & AddAssetDialog.axaml & Marija Savkina \& Adela Pastekova\\
-\cline{3-4}
+\cmidrule{3-4}
 & & AssetsTabView.axaml & Marija Savkina \& Adela Pastekova\\
-\cline{3-4}
+\cmidrule{3-4}
 & & MainWindow.axaml & Everyone\\
-\cline{3-4}
+\cmidrule{3-4}
 & & ManagerButtonView.axaml & Marija Savkina \& Adela Pastekova\\
-\cline{3-4}
+\cmidrule{3-4}
 & & ResultsTabView.axaml & Marija Savkina \& Alex Zalanyi \& Adela Pastekova\\
-\cline{3-4}
+\cmidrule{3-4}
 & & SourceTabView.axaml & Zoltan Suveges \& Filip Tichy \& Melana Ohrimeca\\
-
-\hline %horizontal line across all table
-\caption{Project Class Contribution}
 \end{longtable}
 
+\clearpage
 \chapter{Figures}
 \label{appendix:figures}
+\fancyhead[L]{Appendix D. {Figures}} % Hardcodes the left header
 
-\begin{figure}[h]
+
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Images/demo-assets.png}
+    \includegraphics[height=0.3\textheight, keepaspectratio]{Images/demo-assets.png}
     \caption{Assets tab from the demo version}
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=1\textwidth]{Images/demo-results.png}
-\caption{Results tab from the demo version}
-\label{fig:results-demo}
+    \centering
+    \includegraphics[height=0.3\textheight, keepaspectratio]{Images/demo-results.png}
+    \caption{Results tab from the demo version}
+    \label{fig:results-demo}
 \end{figure}
 
+\clearpage
 \section*{Sprint 1}
 
 \begin{figure}[H]
@@ -334,6 +336,7 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
     \caption{Sprint 1 retrospective}
 \end{figure}
 
+\clearpage
 \section*{Sprint 2}
 
 \begin{figure}[H]
@@ -354,6 +357,7 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
     \caption{Sprint 2 retrospective}
 \end{figure}
 
+\clearpage
 \section*{Sprint 3}
 
 \begin{figure}[H]
@@ -380,13 +384,20 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
     \caption{Sprint 3 retrospective}
 \end{figure}
 
+\clearpage
 \section*{Sprint 4}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.47\textwidth,keepaspectratio]{Images/sprint4_planning1.png}
-    \hspace{0.06\textwidth}
-    \includegraphics[width=0.47\textwidth,keepaspectratio]{Images/sprint4_planning2.png}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/sprint4_planning1.png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/sprint4_planning2.png}
+    \end{minipage}
+    
     \caption{Sprint 4 planning}
 \end{figure}
 
@@ -402,6 +413,7 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
     \caption{Sprint 4 retrospective}
 \end{figure}
 
+\clearpage
 \section*{Sprint 5}
 
 \begin{figure}[H]
@@ -416,6 +428,7 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
     \caption{Sprint 5 retrospective}
 \end{figure}
 
+\clearpage
 \section*{Sprint 6}
 
 \begin{figure}[H]
@@ -435,6 +448,8 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
     \includegraphics[width=0.94\textwidth,keepaspectratio]{Images/sprint6_retro.png}
     \caption{Sprint 6 retrospective}
 \end{figure}
+
+\clearpage
 \chapter{Target User Persona}
 
 The system is designed with a specific target audience in mind. To ensure an optimal user experience, the ideal user (persona) interacting with this system is assumed to have the following profile:
@@ -444,3 +459,6 @@ The system is designed with a specific target audience in mind. To ensure an opt
     \item Have a basic understanding of the district heating problem being solved by the system
     \item Be able to read and understand basic input/output data
 \end{itemize}
+
+\clearpage
+\printbibliography[heading=bibnumbered, title={References}]
