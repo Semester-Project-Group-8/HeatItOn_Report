@@ -11,13 +11,16 @@
 \end{figure}
 \vspace*{\fill}
 
-\newpage
+\clearpage
 \chapter{Task and Review Assignments}
+\fancyhead[L]{Appendix B. Task and Review Assignments} % Hardcodes the left header
+\mbox{} % Keeps longtable from confusing the page builder
 
 \setlength{\LTleft}{\fill}
 \setlength{\LTright}{\fill}
+\renewcommand{\arraystretch}{1.3} % Gives rows breathing room
 
-\begin{longtable}{|p{1.2cm}|p{4.5cm}|p{2.8cm}|p{2.6cm}|p{2.6cm}|}
+\begin{longtable}{|p{1.5cm}|p{4.5cm}|p{2.8cm}|p{2.6cm}|p{2.6cm}|}
 \caption{Code Review Assignments per Task} \\
 \hline
 \textbf{Issue Key} & \textbf{Summary} & \textbf{Assignee} & \textbf{Review 1} & \textbf{Review 2} \\
@@ -31,6 +34,7 @@
 \endhead
 
 \hline
+\multicolumn{5}{r}{\textit{Continued on next page}} \\
 \endfoot
 
 \hline
@@ -112,13 +116,16 @@ HEAT-279 & Graph on source view not showing & Adela Pastekova & Zoltan Suveges &
 \end{longtable}
 
 
-\newpage
+\clearpage
 \chapter{Report Table of Contribution}
+\fancyhead[L]{Appendix C. {Report Table of Contribution}} % Hardcodes the left header
+\mbox{} % Keeps longtable from confusing the page builder
 
 \setlength{\LTleft}{\fill}
 \setlength{\LTright}{\fill}
+\renewcommand{\arraystretch}{1.3}
 
-\begin{longtable}{|p{5.5cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
+\begin{longtable}{|p{5.7cm}|p{2.5cm}|p{2.5cm}|p{2.5cm}|}
 \caption{Report Writing Contributions} \\
 \hline
 \textbf{Chapter} & \textbf{Author} & \textbf{First Review} & \textbf{Second Review} \\
@@ -132,6 +139,7 @@ HEAT-279 & Graph on source view not showing & Adela Pastekova & Zoltan Suveges &
 \endhead
 
 \hline
+\multicolumn{4}{r}{\textit{Continued on next page}} \\
 \endfoot
 
 \hline
@@ -162,30 +170,33 @@ System Technical Architecture, Package Diagram, Activity Diagrams (Solution (Tec
 Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
 \end{longtable}
 
-\renewcommand{\arraystretch}{1.3}
-\begin{longtable}{|p{1.5cm}|p{2cm}|p{5cm}|p{4cm}|}
 
+\clearpage
+\renewcommand{\arraystretch}{1.3}
+\begin{longtable}{|p{1.5cm}|p{2cm}|p{5.4cm}|p{4.5cm}|}
+\caption{Project Class Contribution} \\
 \hline
 %HEADER
 \textbf{Project} & \textbf{Folder} & \textbf{File} & \textbf{Author} \\
 \hline
 \endfirsthead
 
+\caption[]{Project Class Contribution (continued)} \\
 \hline
 \textbf{Project} & \textbf{Folder} & \textbf{File} & \textbf{Author} \\
 \hline
 \endhead
 
-\multicolumn{4}{r}{\textit{Table continued on next page}} \\
+\hline
+\multicolumn{4}{r}{\textit{Continued on next page}} \\
 \endfoot
 
+\hline
 \endlastfoot
+
 %BACKEND
-\multirow{21}{*}{Backend}
-%data
- & Data & BackendDbContext.cs & Zoltan Suveges\\
-\cline{2-4}%line from 2 to 4
-%controllers
+\multirow{21}{*}{Backend} & Data & BackendDbContext.cs & Zoltan Suveges\\
+\cline{2-4}
 &\multirow{6}{*}{Controllers} & AssetsController.cs & Marija Savkina\\
 \cline{3-4}
 & & OptimizedResultsController.cs & Zoltan Suveges\\
@@ -198,10 +209,8 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
 \cline{3-4}
 & & SourceController.cs & Adela Pastekova\\
 \cline{2-4}
-%hubs
 & Hubs & BackendHubs.cs & Zoltan Suveges\\
 \cline{2-4}
-%models
 &\multirow{5}{*}{Models} & Asset.cs & Alex Zalanyi\\
 \cline{3-4}
 & & OptimizedResult.cs & Zoltan Suveges\\
@@ -212,12 +221,10 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
 \cline{3-4}
 & & Source.cs & Alex Zalanyi\\
 \cline{2-4}
-%interfaces
 &\multirow{2}{*}{Interfaces} & IController.cs & Filip Tichy\\
 \cline{3-4}
 & & IService.cs & Adela Pastekova\\
 \cline{2-4}
-%services
 &\multirow{6}{*}{Services} & AssetService.cs & Marija Savkina\\
 \cline{3-4}
 & & OptimizedResultsService.cs & Zoltan Suveges\\
@@ -229,13 +236,10 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
 & & ResultService.cs & Melana Ohrimeca\\
 \cline{3-4}
 & & SourceService.cs & Adela Pastekova\\
-\cline{2-4}
-\hline %horizontal line across all table
+\hline 
 
 %FRONTEND
-\multirow{28}{*}{Frontend}
-%Data
-&\multirow{8}{*}{} & CsvHandler.cs & Adela Pastekova \& Melana Ohrimeca\\
+\multirow{28}{*}{Frontend} &\multirow{8}{*}{Data} & CsvHandler.cs & Adela Pastekova \& Melana Ohrimeca\\
 \cline{3-4}
 & & AssetClient.cs & Zoltan Suveges\\
 \cline{3-4}
@@ -251,7 +255,6 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
 \cline{3-4}
 & & SourceClient.cs & Zoltan Suveges\\
 \cline{2-4}
-%models
 &\multirow{7}{*}{Models} & Asset.cs & Zoltan Suveges\\
 \cline{3-4}
 & & GeneratorLegendItem.cs & Marija Savkina\\
@@ -266,7 +269,6 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
 \cline{3-4}
 & & Source.cs & Zoltan Suveges\\
 \cline{2-4}
-%viewmodels
 &\multirow{7}{*}{ViewModels} & AddAssetDialogViewModel.cs & Marija Savkina\\
 \cline{3-4}
 & & AssetsTabViewModel.cs & Marija Savkina\\
@@ -281,7 +283,6 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
 \cline{3-4}
 & & ViewModelBase.cs & Zoltan Suveges\\
 \cline{2-4}
-%views
 &\multirow{6}{*}{Views} & AddAssetDialog.axaml & Marija Savkina \& Adela Pastekova\\
 \cline{3-4}
 & & AssetsTabView.axaml & Marija Savkina \& Adela Pastekova\\
@@ -293,27 +294,35 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
 & & ResultsTabView.axaml & Marija Savkina \& Alex Zalanyi \& Adela Pastekova\\
 \cline{3-4}
 & & SourceTabView.axaml & Zoltan Suveges \& Filip Tichy \& Melana Ohrimeca\\
-
-\hline %horizontal line across all table
-\caption{Project Class Contribution}
+\hline
 \end{longtable}
 
+\clearpage
 \chapter{Figures}
 \label{appendix:figures}
+\fancyhead[L]{Appendix D. {Figures}} % Hardcodes the left header
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
-    \includegraphics[width=\textwidth]{Images/demo-assets.png}
+    \includegraphics[width=0.6\textwidth]{Images/backend-file-structure.png}
+    \caption{Backend file structure showing the organization of controllers, services, interfaces, models, and data components.}
+    \label{fig:backend-structure}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[height=0.3\textheight, keepaspectratio]{Images/demo-assets.png}
     \caption{Assets tab from the demo version}
 \end{figure}
 
 \begin{figure}[H]
-\centering
-\includegraphics[width=1\textwidth]{Images/demo-results.png}
-\caption{Results tab from the demo version}
-\label{fig:results-demo}
+    \centering
+    \includegraphics[height=0.3\textheight, keepaspectratio]{Images/demo-results.png}
+    \caption{Results tab from the demo version}
+    \label{fig:results-demo}
 \end{figure}
 
+\clearpage
 \section*{Sprint 1}
 
 \begin{figure}[H]
@@ -334,6 +343,7 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
     \caption{Sprint 1 retrospective}
 \end{figure}
 
+\clearpage
 \section*{Sprint 2}
 
 \begin{figure}[H]
@@ -354,6 +364,7 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
     \caption{Sprint 2 retrospective}
 \end{figure}
 
+\clearpage
 \section*{Sprint 3}
 
 \begin{figure}[H]
@@ -380,13 +391,20 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
     \caption{Sprint 3 retrospective}
 \end{figure}
 
+\clearpage
 \section*{Sprint 4}
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.47\textwidth,keepaspectratio]{Images/sprint4_planning1.png}
-    \hspace{0.06\textwidth}
-    \includegraphics[width=0.47\textwidth,keepaspectratio]{Images/sprint4_planning2.png}
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/sprint4_planning1.png}
+    \end{minipage}\hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{Images/sprint4_planning2.png}
+    \end{minipage}
+    
     \caption{Sprint 4 planning}
 \end{figure}
 
@@ -402,6 +420,7 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
     \caption{Sprint 4 retrospective}
 \end{figure}
 
+\clearpage
 \section*{Sprint 5}
 
 \begin{figure}[H]
@@ -416,6 +435,7 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
     \caption{Sprint 5 retrospective}
 \end{figure}
 
+\clearpage
 \section*{Sprint 6}
 
 \begin{figure}[H]
@@ -435,6 +455,8 @@ Sprints & Filip Tichy & Alex Zalanyi & Melana Ohrimeca \\ \hline
     \includegraphics[width=0.94\textwidth,keepaspectratio]{Images/sprint6_retro.png}
     \caption{Sprint 6 retrospective}
 \end{figure}
+
+\clearpage
 \chapter{Target User Persona}
 
 The system is designed with a specific target audience in mind. To ensure an optimal user experience, the ideal user (persona) interacting with this system is assumed to have the following profile:
@@ -444,3 +466,6 @@ The system is designed with a specific target audience in mind. To ensure an opt
     \item Have a basic understanding of the district heating problem being solved by the system
     \item Be able to read and understand basic input/output data
 \end{itemize}
+
+\clearpage
+\printbibliography[heading=bibnumbered, title={References}]

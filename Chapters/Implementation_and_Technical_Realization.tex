@@ -76,14 +76,8 @@ Overall, the final version achieves a significantly higher level of usability, c
 \hspace*{1cm}The backend is implemented using ASP.NET Core 9.0 and follows a layered architectural design that emphasizes modularity, scalability, and separation of concerns. The structure consists of Controllers, Services, Interfaces, Models, and a Data layer, each responsible for a distinct part of the system functionality.
 
 
-\textbf{Architecture and Main Components}
+\textbf{Architecture and Main Components} can be found in Appendix \ref{appendix:figures}.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.6\textwidth]{Images/backend-file-structure.png}
-\caption{Backend file structure showing the organization of controllers, services, interfaces, models, and data components.}
-\label{fig:backend-structure}
-\end{figure}
 
 The backend is organized into clearly defined layers:
 
@@ -164,8 +158,8 @@ Overall, the backend implementation follows best practices for modern web applic
 These additions work together with the existing layers as follows: controllers accept HTTP requests and delegate work to services; services implement business logic and interact with the data layer (EF `BackendDbContext`); both controllers and services rely on the `Interfaces` abstraction and dependency injection; the `ExceptionHandlingMiddleware` sits early in the request pipeline, catching exceptions from controllers and services, logging them, mapping domain errors to HTTP status codes, and returning compact JSON error responses. As a result, many local try/catch blocks were removed and method implementations became easily readable.
 
 \begin{itemize}
-    \item \textbf{Exception handling}: Centralized in \texttt{ExceptionHandlingMiddleware}. It intercepts exceptions thrown by controllers and services, logs them, maps domain errors to appropriate HTTP status codes, and returns a compact JSON payload (for example \texttt{\{ "error": "<message>", "stackTrace": "<stackTrace>" \}}) with \texttt{Content-Type: application/json}. This provides consistent, machine-readable error responses for clients and prevents raw error details from leaking.
-    \item \textbf{Interfaces}: Provide clear abstraction boundaries for controllers and services (e.g., \texttt{IController<TCreate,TUpdate>}, \texttt{IService<T>}). Using interfaces enables dependency injection, easier unit testing, and consistent error-typing so the middleware can map domain exceptions to appropriate HTTP responses.
+    \item \textbf{Exception handling}: Centralized in \texttt{ExceptionHandlingMiddleware}. It intercepts exceptions thrown by controllers and services, logs them, maps domain errors to appropriate HTTP status codes, and returns a compact JSON payload (for example \texttt{\{}\texttt{"error":} \texttt{"<message>",}\texttt{"stackTrace":}\texttt{"<stackTrace>"}\texttt{\}}) with \texttt{Content-Type:}\texttt{application/json}. This provides consistent, machine-readable error responses for clients and prevents raw error details from leaking.
+    \item \textbf{Interfaces}: Provide clear abstraction boundaries for controllers and services \\ (e.g., \texttt{IController <TCreate,TUpdate>}, \texttt{IService<T>}). Using interfaces enables dependency injection, easier unit testing, and consistent error-typing so the middleware can map domain exceptions to appropriate HTTP responses.
     \begin{itemize}
         \item The generic controller interface formalizes standard CRUD operations used across controllers:
         \begin{itemize}
