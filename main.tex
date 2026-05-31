@@ -1,43 +1,73 @@
-
 % -------------------------------------------------------------
 % Suggested template for the SDU Software Engineering Course, 2025
 % -------------------------------------------------------------
-\documentclass[11pt,                                          % Main text font size
-               a4paper,                                       % Paper size
-               oneside]{report}                               % Print two-sided, LaTeX 'report' template
-               
+\documentclass[11pt, a4paper, oneside]{report}
+
 % -------------------------------------------------------------
-% PACKAGES - Only load if necessary / used
+% PACKAGES - Visual and Structural Upgrades
 % -------------------------------------------------------------
-\usepackage{graphicx}                                         % Include graphics
-\usepackage{xcolor}      
+\usepackage[utf8]{inputenc}   % Standard file encoding
+\usepackage[T1]{fontenc}      % Better font encoding for special characters
+\usepackage{lmodern}          % Smoother, modern font rendering
+
+\usepackage[margin=2.5cm]{geometry} % Upgraded margins for A4 paper
+\usepackage{setspace}         % Line spacing control
+\onehalfspacing               % 1.5 line spacing for readability
+\usepackage{parskip}          % Replaces paragraph indents with clean blank lines
+\usepackage{microtype}        % Micro-typography for flawless text justification
+
+\usepackage{graphicx}
+\usepackage{xcolor}
 \usepackage{titlesec}
 \titleformat{\chapter}[display]{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 \titlespacing*{\chapter}{0pt}{-30pt}{40pt}
 \usepackage{amsmath}  % For math formulas
 \usepackage{multicol} % For multi-column 
 \usepackage{tabularx} % For tables that fit the page width
-\usepackage{booktabs} % For professional-looking lines
-\usepackage{enumitem} % For rormating lists of items
+\usepackage{booktabs} % For professional-looking table lines
+\usepackage{enumitem} % For formatting lists of items
 \usepackage{needspace} % Keep headings with the content that follows
 \usepackage{float} % for better picture placement
-\usepackage[hidelinks]{hyperref} %for clickable chapters
 \usepackage{longtable}
 \usepackage{multirow}
 \usepackage{array}
+\usepackage{caption}
+\usepackage[backend=biber, style=numeric]{biblatex} % bibliography package
+
+\addbibresource{references.bib} % link references
+\setlength{\LTcapwidth}{\textwidth} % The specific fix for longtable
+% -------------------------------------------------------------
+% HEADERS AND FOOTERS (fancyhdr)
+% -------------------------------------------------------------
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{} % clear all default headers/footers
+\fancyhead[L]{\nouppercase{\leftmark}} % chapter name on the left
+\fancyhead[R]{\runningTitle}           % title on the right
+\fancyfoot[C]{\thepage}                % Page number in the center
+\renewcommand{\headrulewidth}{0.4pt}   % Subtle line under header
+\renewcommand{\footrulewidth}{0pt}     % No line over footer
+
+% ensure plain pages only have the page number
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+}
+
 % -------------------------------------------------------------
 % USER VARIABLES AND DEFINITIONS
 % -------------------------------------------------------------
-\newcommand{\theTitle}{2nd Semester Project - HeatItOn}         % Thesis title
-\newcommand{\runningTitle}{Semester Project Report}             % Short title for headers
-\newcommand{\thegroup}{\textbf{Group 8}}                  	% Author name
+\newcommand{\theTitle}{2nd Semester Project - HeatItOn} % thesis title
+\newcommand{\runningTitle}{Group 8 - 2nd Semester Project}     % title for headers
+\newcommand{\thegroup}{\textbf{Group 8}}                % Author name
 \newcommand{\supervisor} {Radoslaw Marek Chylak}
 \newcommand{\groupmembers}{
-Adela Pastekova – adpas25@student.sdu.dk 
-Alex Zalanyi – alzal25@student.sdu.dk 
-Filip Tichy – fitic25@student.sdu.dk 
-Marija Savkina – masav25@student.sdu.dk 
-Melana Ohrimeca – meohr25@student.sdu.dk 
+Adela Pastekova – adpas25@student.sdu.dk \\
+Alex Zalanyi – alzal25@student.sdu.dk \\
+Filip Tichy – fitic25@student.sdu.dk \\
+Marija Savkina – masav25@student.sdu.dk \\
+Melana Ohrimeca – meohr25@student.sdu.dk \\
 Zoltan Suveges – zosuv25@student.sdu.dk 
 }
 \newcommand{\subtitle}[1]{%
@@ -46,93 +76,102 @@ Zoltan Suveges – zosuv25@student.sdu.dk
 }
 
 \definecolor{mygrey}{RGB}{64,64,64}
-                      % Define your own colours
 \definecolor{ocre}{RGB}{45,105,145} 
 \definecolor{barblue}{RGB}{153,204,254}                       % Used in Gantt chart
 \definecolor{groupblue}{RGB}{51,102,254}                      % Used in Gantt chart
 \definecolor{linkred}{RGB}{165,0,33}                          % Used in Gantt chart
 \definecolor{nounred}{HTML}{E63946}        % red color for Verb-Noun
 \definecolor{verbblue}{HTML}{007BFF}       % blue color for Verb-Noun
+\captionsetup{
+  width=\textwidth,         % allows captions to go full width
+  justification=centerlast, % centers captions if need 2 lines
+  skip=10pt                 % adds a little room between caption and table
+}
+% -------------------------------------------------------------
+% HYPERREF (Must be loaded last)
+% -------------------------------------------------------------
+\usepackage[colorlinks=true, 
+            linkcolor=ocre,    % Colors your TOC and internal links
+            citecolor=ocre,    % Colors your bibliography citations
+            urlcolor=verbblue, % Colors web links
+            bookmarks=true]{hyperref}
+
 % -------------------------------------------------------------
 % START DOCUMENT CONTENT
 % -------------------------------------------------------------
-\begin{document}                                              % Start document
+\begin{document}                                              
 
 % -------------------------------------------------------------
 % COVER PAGE
 % -------------------------------------------------------------
-\begin{titlepage}                                             % Create cover page
-\pagestyle{empty}                                             % No headers or footers on cover
-\centering                                                    % Centre all contents on cover page
-\includegraphics[width=0.7\textwidth]{Images/SDULogo-uk.png} \\ % UoE-SoE logo
-\vspace{40mm}                                                 % Vertical space
-\hrule\vspace{5mm}                                            % Horizontal rule above title
-{\LARGE \textbf{\textcolor{mygrey}{\theTitle}}} \subtitle{Heat Production Optimization}\\           % The title of the report
-\vspace{5mm}\hrule\vspace{20mm}                               % Horizontal rule below title
+\begin{titlepage}                                             
+\pagestyle{empty}                                             
+\centering                                                    
+\includegraphics[width=0.7\textwidth]{Images/SDULogo-uk.png} \\ 
+\vspace{40mm}                                                 
+\hrule\vspace{5mm}                                            
+{\LARGE \textbf{\textcolor{mygrey}{\theTitle}}} \subtitle{Heat Production Optimization}\\           
+\vspace{5mm}\hrule\vspace{20mm}                               
 
-{\large \thegroup} \\ \vspace{2mm} 
-{\large Adela Pastekova – adpas25@student.sdu.dk} \\ \vspace{2mm} % The author
-{\large Alex Zalanyi – alzal25@student.sdu.dk} \\ \vspace{2mm} % The author
-{\large Filip Tichy – fitic25@student.sdu.dk} \\ \vspace{2mm} % The author
-{\large Marija Savkina – masav25@student.sdu.dk} \\ \vspace{2mm} % The author
-{\large Melana Ohrimeca – meohr25@student.sdu.dk} \\ \vspace{2mm} % The author
-{\large Zoltan Suveges – zosuv25@student.sdu.dk} \\ \vspace{2mm} % The author
+{\large \thegroup} \\ \vspace{5mm} 
+{\large \groupmembers}
 
-\vfill                                                        % Fill space down to bottom of page
-{\small \today}     
+\vfill                                                        
+{\small June 2026}     
 \end{titlepage}
-% -------------------------------------------------------------
-% FRONT
-% -------------------------------------------------------------
-%\pagenumbering{roman}                                         % Roman page numbering for preamble
-\setcounter{page}{1}                                          % Start page counter
-%\input{Chapters/Abstract}                             % Call abstract file
-\tableofcontents                                              % Add table of contents
 
 % -------------------------------------------------------------
-% LISTS OF FIGURES AND TABLES
+% FRONT MATTER
 % -------------------------------------------------------------
-\listoffigures                                                % Add list of figures
-\listoftables                                                 % Add list of tables
+\setcounter{page}{1}                                          
+\tableofcontents                                              
+
+\listoffigures                                                
+\listoftables                                                 
 
 % -------------------------------------------------------------
 % TABLE OF ABBREVIATIONS
 % -------------------------------------------------------------
-
-\begin{table}[h]
+\clearpage
 \section*{List of Abbreviations}
+\addcontentsline{toc}{chapter}{List of Abbreviations} % Adds it to TOC
+\begin{table}[H]
 \centering
+\renewcommand{\arraystretch}{1.2} % Gives rows a bit of breathing room
 \begin{tabular}{l p{10cm}}
+\toprule
 \textbf{Abbreviation} & \textbf{Meaning} \\
+\midrule
 DB   & Database \\
 FE   & Frontend \\
 BE  & Backend \\
 UML  & Unified Modelling Language \\
-CRC & Class-Responability-Collaboration\\
+CRC & Class-Responsibility-Collaboration\\
 OPT & Optimizer \\
 DV & Data Visualization \\
 AM & Asset Manager \\
 SDM & Source Data Manager \\
 RDM & Result Data Manager \\
 UI & User Interface \\
-UX & User Experiece \\
+UX & User Experience \\
 WSL & Windows Subsystem for Linux \\
 OS & Operating System \\
-RAM & Rapid Access Memory \\
+RAM & Random Access Memory \\
 API & Application Programming Interface \\
 REST & Representational State Transfer \\
 HTTP & Hypertext Transfer Protocol \\
 MVVM &  Model-View-ViewModel \\
 CRUD & Create-Read-Update-Delete \\
-SOLID & Single Responsability-Open/Closed-Liskov Substitution-Interface Segregation-Dependency Inversion \\
-DRY & Do not Repeat Yourself \\
+SOLID & Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion \\
+DRY & Do Not Repeat Yourself \\
 KISS & Keep It Simple, Stupid \\
 YAGNI & You Aren’t Gonna Need It \\
-SoC & Separation of Concers \\
+SoC & Separation of Concerns \\
 SQL & Structured Query Language \\
+\bottomrule
 \end{tabular}
-\caption{List of Abbreviations}
 \end{table}
+
 % -------------------------------------------------------------
 % ABSTRACT
 % -------------------------------------------------------------
@@ -140,89 +179,54 @@ SQL & Structured Query Language \\
 \phantomsection
 \addcontentsline{toc}{chapter}{Abstract}
 \section*{Abstract}
-\input{Chapters/Abstract.tex}                             % Call file with chapter
+\input{Chapters/Abstract.tex}                             
 
 \newpage
-\pagenumbering{arabic}                                        % Change age numbering to arabic
-% -------------------------------------------------------------
-% CHAPTER - INTRODUCTION
-% -------------------------------------------------------------
-\chapter[Introduction]{Introduction}             % Short and long title versions
-\label{chap:intro}                                            % Chapter label
-\input{Chapters/Introduction.tex}                             % Call file with chapter
+\pagenumbering{arabic}                                        
 
 % -------------------------------------------------------------
-% CHAPTER - SCRUM IMPLEMENTATION
+% CHAPTERS
 % -------------------------------------------------------------
-\chapter[Scrum Implementation]{Scrum Implementation}             % Short and long title versions
-\label{chap:scrum}                                            % Chapter label
-\input{Chapters/Scrum_Implementation.tex}                             % Call file with chapter
+\chapter[Introduction]{Introduction}             
+\label{chap:intro}                                            
+\input{Chapters/Introduction.tex}                             
+
+\chapter[Scrum Implementation]{Scrum Implementation}             
+\label{chap:scrum}                                            
+\input{Chapters/Scrum_Implementation.tex}                             
+
+\chapter[Sprints]{Sprints}             
+\label{chap:sprints}                                            
+\input{Chapters/Sprints.tex}                             
+
+\chapter[Solution (Technical Aspect)]{Solution (Technical Aspect)}             
+\label{chap:solution}                                            
+\input{Chapters/Solution(Technical_Aspect).tex}                             
+
+\chapter[Implementation and Technical Realization]{Implementation and Technical Realization}             
+\label{chap:implement}                                            
+\input{Chapters/Implementation_and_Technical_Realization.tex}                             
+
+\chapter[Discussion and Reflection]{Discussion and Reflection}             
+\label{chap:reflect}                                            
+\input{Chapters/Discussion_and_Reflection.tex}                             
+
+\chapter[Conclusion]{Conclusion}             
+\label{chap:conclusion}                                            
+\input{Chapters/Conclusion.tex}                             
 
 % -------------------------------------------------------------
-% CHAPTER - SPRINTS
-% -------------------------------------------------------------
-\chapter[Sprints]{Sprints}             % Short and long title versions
-\label{chap:sprints}                                            % Chapter label
-\input{Chapters/Sprints.tex}                             % Call file with chapter
+%AI USAGE
+% -------------------------------------------------------------            
+\chapter[AI Usage]{AI Usage}             
+\label{chap:ai}                                            
+\input{Chapters/AI_Usage.tex}                             
 
 % -------------------------------------------------------------
-% CHAPTER - SOLUTION(TECHNICAL ASPECT)
+% APPENDIX
 % -------------------------------------------------------------
-\chapter[Solution(Technical Aspect)]{Solution(Technical Aspect)}             % Short and long title versions
-\label{chap:solution}                                            % Chapter label
-\input{Chapters/Solution(Technical_Aspect).tex}                             % Call file with chapter
-
-% -------------------------------------------------------------
-% CHAPTER - IMPLEMENTATION AND TECHNICAL REALIZATION
-% -------------------------------------------------------------
-\chapter[Implementation and Technical Realization]{Implementation and Technical Realization}             % Short and long title versions
-\label{chap:implement}                                            % Chapter label
-\input{Chapters/Implementation_and_Technical_Realization.tex}                             % Call file with chapter
-
-% -------------------------------------------------------------
-% CHAPTER - DISCUSSION AND REFLECTION
-% -------------------------------------------------------------
-\chapter[Discussion and Reflection]{Discussion and Reflection}             % Short and long title versions
-\label{chap:reflect}                                            % Chapter label
-\input{Chapters/Discussion_and_Reflection.tex}                             % Call file with chapter
-
-% -------------------------------------------------------------
-% CHAPTER - CONCLUSION
-% -------------------------------------------------------------
-\chapter[Conclusion]{Conclusion}             % Short and long title versions
-\label{chap:conclusion}                                            % Chapter label
-\input{Chapters/Conclusion.tex}                             % Call file with chapter
-
-% -------------------------------------------------------------
-% CHAPTER - REFERENCES
-% -------------------------------------------------------------
-\chapter[References]{References}             % Short and long title versions
-\pagenumbering{gobble} %stops numbering
-\label{chap:ref}                                            % Chapter label
-\input{Chapters/References.tex}                             % Call file with chapter
-
-% -------------------------------------------------------------
-% CHAPTER - AI USAGE
-% -------------------------------------------------------------
-\chapter[AI Usage]{AI Usage}             % Short and long title versions
-\label{chap:ai}                                            % Chapter label
-\input{Chapters/AI_Usage.tex}                             % Call file with chapter
-
-% -------------------------------------------------------------
-% CHAPTER - APPENDIX
-% -------------------------------------------------------------
-\appendix                                                     % Start appendices
-                        % Title of first appendix
-\input{Chapters/Appendix.tex}                                 % Call file with appendix
-
-% -------------------------------------------------------------
-% BIBLIOGRAPHY 
-% -------------------------------------------------------------
-\bibliographystyle{abbrv}
-\bibliography{references}
+\appendix                                                     
+\input{Chapters/Appendix.tex}                                 
 
 
-% -------------------------------------------------------------
-% END DOCUMENT CONTENT
-% -------------------------------------------------------------
 \end{document}
